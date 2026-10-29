@@ -148,6 +148,8 @@ class Source:
         out.append("      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
         if self.geo:
             out.append("      <semantic-values>\n        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />\n      </semantic-values>")
+        if any(PARAM in f for _, _, f, *_ in self.calcs):
+            out.append(PARAM_DEPS)
         out.append(f"""      <object-graph>
         <objects>
           <object caption={a(self.csv)} id={a(self.obj)}>
@@ -182,6 +184,12 @@ EXP = Source("exp", "Exportations annuelles", "exportations.csv", [
 EXP.geo["pays_en"] = "[Country].[Name]"
 
 PARAM = "[Parameters].[Parameter 1]"
+PARAM_DEPS = """      <datasource-dependencies datasource='Parameters'>
+        <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{YEAR}'>
+          <calculation class='tableau' formula='{YEAR}' />
+          <range granularity='1' max='{YEAR}' min='2012' />
+        </column>
+      </datasource-dependencies>"""
 P = PARAM   # dans une formule, un paramètre s'écrit [Parameters].[Parameter 1]
 MRD = "n#,##0"
 FMT_CHF = "n#,##0"
@@ -355,9 +363,6 @@ class Sheet:
         dep_cols = deps(s, insts)
         uses_param = any(P in f for cid, _, f, *_ in s.calcs if cid in dep_cols)
         dep = [col_decl(s, c) for c in dep_cols]
-        if any("(generated)]" in str(x) for x in [*self.rows, *self.cols]):
-            dep += ["<column datatype='real' name='[Latitude (generated)]' role='measure' type='quantitative' user:auto-column='latitude' />",
-                    "<column datatype='real' name='[Longitude (generated)]' role='measure' type='quantitative' user:auto-column='longitude' />"]
         dep += [f"<column-instance column={a('[' + i.col + ']')} derivation={a(i.deriv)} name={a('[' + i.name + ']')} "
                 f"pivot='key' type={a(i.typ)} />" for i in insts]
         ds = [f"<datasource caption={a(s.caption)} name={a(s.name)} />"]
@@ -375,6 +380,10 @@ class Sheet:
             sort = f"<computed-sort column={a(dim.ref)} direction={a(direction)} using={a(meas.ref)} />"
         slices = ("<slices>" + "".join(f"<column>{escape(c)}</column>" for c in self.slices) + "</slices>") if self.slices else ""
         enc = "".join(f"<{k} column={a(i.ref)} />" for k, i in self.enc)
+        is_map = any("(generated)]" in str(x) for x in [*self.rows, *self.cols])
+        if is_map:
+            enc += f"<geometry column={a(s.ref('Geometry (generated)'))} />"
+        mapsrc = "<mapsources><mapsource name='Tableau' /></mapsources>" if is_map else ""
         pane_style = []
         if self.mark_color:
             pane_style.append(f"<format attr='mark-color' value={a(self.mark_color)} />")
@@ -393,6 +402,7 @@ class Sheet:
       <table>
         <view>
           <datasources>{''.join(ds)}</datasources>
+          {mapsrc}
           {pdep}
           <datasource-dependencies datasource={a(s.name)}>{''.join(dep)}</datasource-dependencies>
           {filt}
@@ -659,6 +669,9 @@ def build() -> Path:
 {params_xml()}
 {EXP.xml()}
   </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
   <worksheets>
 {chr(10).join(s.xml() for s in sheets)}
   </worksheets>
