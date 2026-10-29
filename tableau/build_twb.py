@@ -185,7 +185,7 @@ EXP.geo["pays_en"] = "[Country].[Name]"
 
 PARAM = "[Parameters].[Parameter 1]"
 PARAM_DEPS = """      <datasource-dependencies datasource='Parameters'>
-        <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{YEAR}'>
+        <column caption='Année choisie' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{YEAR}'>
           <calculation class='tableau' formula='{YEAR}' />
           <range granularity='1' max='{YEAR}' min='2012' />
         </column>
@@ -243,7 +243,7 @@ LUX_OR = EXP.calc("Calc_LuxeOr", "Part de l'or dans les automatiques",
 def params_xml() -> str:
     return f"""    <datasource hasconnection='false' inline='true' name='Parameters' version={a(VERSION)}>
       <aliases enabled='yes' />
-      <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>
+      <column caption='Année choisie' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>
         <calculation class='tableau' formula='{{YEAR}}' />
         <range granularity='1' max='{{YEAR}}' min='2012' />
       </column>
@@ -368,8 +368,8 @@ class Sheet:
         ds = [f"<datasource caption={a(s.caption)} name={a(s.name)} />"]
         pdep = ""
         if uses_param:
-            ds.insert(0, "<datasource name='Parameters' />")
-            pdep = (f"<datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' "
+            ds.append("<datasource name='Parameters' />")   # la première source de la vue est la source principale
+            pdep = (f"<datasource-dependencies datasource='Parameters'><column caption='Année choisie' datatype='integer' name='[Parameter 1]' "
                     f"param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>"
                     f"<calculation class='tableau' formula='{{YEAR}}' /><range granularity='1' max='{{YEAR}}' min='2012' />"
                     f"</column></datasource-dependencies>")
@@ -571,7 +571,7 @@ class Dash:
         <datasource name='Parameters' />
       </datasources>
       <datasource-dependencies datasource='Parameters'>
-        <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>
+        <column caption='Année choisie' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>
           <calculation class='tableau' formula='{{YEAR}}' />
           <range granularity='1' max='{{YEAR}}' min='2012' />
         </column>
