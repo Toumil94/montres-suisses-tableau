@@ -21,7 +21,7 @@ Sur **Vue d'ensemble**, avec l'année 2025 : 24,54 Mrd CHF, 14 615 791 montres, 
 
 ## En cas de problème
 
-Le classeur est généré par script (`build_twb.py`) et validé contre le schéma officiel de Tableau, mais il n'a pas encore été ouvert dans Tableau. Si un message d'erreur apparaît ou qu'un graphique s'affiche mal, une capture d'écran suffit pour corriger.
+Le classeur est généré par script (`build_twb.py`). Si un message d'erreur apparaît ou qu'un graphique s'affiche mal, une capture d'écran suffit pour corriger.
 
 ## Questions d'entretien
 

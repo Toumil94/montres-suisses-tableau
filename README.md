@@ -37,7 +37,7 @@ Un **curseur Année** recalcule tous les indicateurs. Fichier : [`tableau/Montre
 | 1. Comprendre le besoin | [Cahier des charges](docs/01_cahier_des_charges.md) |
 | 2. Définir les indicateurs | [Dictionnaire des KPI](docs/02_dictionnaire_kpi.md), avec les formules Tableau |
 | 3. Collecter et fiabiliser | [Collecte](pipeline/fetch.py) et [modélisation](pipeline/build.py), automatisées chaque mois par GitHub Actions, avec [contrôles bloquants](tests/test_donnees.py) |
-| 4. Restituer | [Classeur Tableau](tableau/) généré par script et validé contre le schéma officiel de Tableau |
+| 4. Restituer | [Classeur Tableau](tableau/) généré par script, avec contrôle automatique des champs et formules |
 | 5. Valider | [Cahier de recette](docs/03_recette.md) |
 | 6. Recommander | [Note de synthèse](docs/04_recommandations.md) |
 
@@ -46,7 +46,7 @@ Un **curseur Année** recalcule tous les indicateurs. Fichier : [`tableau/Montre
 - **Données officielles** : exportations suisses déclarées par l'Office fédéral de la douane et de la sécurité des frontières, diffusées par l'ONU (UN Comtrade), codes SH 9101 (boîte en métal précieux) et 9102 (autres boîtes), par pays et par type de mouvement. Conversion en CHF au cours moyen de la **Banque nationale suisse**.
 - **Qualité** : la somme des pays retrouve le total mondial publié (99,98 %), contrôlé à chaque mise à jour.
 - **Tableau** : paramètre d'année, calculs conditionnels (`IF [annee] = [Année]`), expressions LOD (`{FIXED}`) pour les parts et le top 15, carte par rôle géographique, tri calculé.
-- **Dashboard as code** : le classeur (`.twb`) est généré par [`build_twb.py`](tableau/build_twb.py), validé contre le [schéma XSD officiel](https://github.com/tableau/tableau-document-schemas) de Tableau 2026.1 et par un contrôle de cohérence des champs et formules.
+- **Dashboard as code** : le classeur (`.twb`) est généré par [`build_twb.py`](tableau/build_twb.py) au format XML de Tableau, puis contrôlé automatiquement ([`check_twb.py`](tableau/check_twb.py)) : chaque champ référencé existe, chaque formule est cohérente, chaque feuille d'un tableau de bord existe.
 
 ## Reproduire
 
@@ -56,7 +56,7 @@ python pipeline/fetch.py        # API publique, limitée en débit : la collecte
 python pipeline/build.py
 python -m pytest tests
 python pipeline/analyse.py
-python tableau/build_twb.py && python tableau/validate_twb.py && python tableau/check_twb.py
+python tableau/build_twb.py && python tableau/check_twb.py
 ```
 
 ## Auteur

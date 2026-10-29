@@ -1,4 +1,4 @@
-"""Contrôles de cohérence que le XSD ne fait pas : références de champs, noms de feuilles, formules."""
+"""Contrôles de cohérence du classeur : références de champs, noms de feuilles, formules."""
 import re
 import sys
 from pathlib import Path

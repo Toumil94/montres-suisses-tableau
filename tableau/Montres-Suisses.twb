@@ -1,28 +1,36 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<workbook original-version="26.1" source-build='0.0.0 (0000.0.0.0)' source-platform='win' version="26.1" xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version="18.1" source-build="2021.1.2 (20211.21.0511.0935)" source-platform='win' version="18.1" xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
-    <ManifestByVersion />
+    <GroupAction />
+    <_.fcp.GroupActionAddRemove.true...GroupActionAddRemove />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
-    <datasource hasconnection='false' inline='true' name='Parameters' version="26.1">
+    <datasource hasconnection='false' inline='true' name='Parameters' version="18.1">
       <aliases enabled='yes' />
       <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'>
         <calculation class='tableau' formula='2025' />
         <range granularity='1' max='2025' min='2012' />
       </column>
     </datasource>
-    <datasource caption="Exportations annuelles" inline='true' name="federated.db591f0d94dd5d62eab9577b" version="26.1">
+    <datasource caption="Exportations annuelles" inline='true' name="federated.db591f0d94dd5d62eab9577b" version="18.1">
       <connection class='federated'>
         <named-connections>
           <named-connection caption="Exportations annuelles" name="textscan.a06248ef362c51cf">
             <connection class='textscan' directory='Data/donnees' filename="exportations.csv" password='' server='' />
           </named-connection>
         </named-connections>
-        <relation connection="textscan.a06248ef362c51cf" name="exportations.csv" table="[exportations#csv]" type='table'>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection="textscan.a06248ef362c51cf" name="exportations.csv" table="[exportations#csv]" type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
             <column datatype="integer" name="annee" ordinal='0' />
             <column datatype="string" name="pays" ordinal='1' />
@@ -38,7 +46,24 @@
             <column datatype="integer" name="pieces" ordinal='11' />
             <column datatype="integer" name="rang_pays" ordinal='12' />
           </columns>
-        </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection="textscan.a06248ef362c51cf" name="exportations.csv" table="[exportations#csv]" type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype="integer" name="annee" ordinal='0' />
+            <column datatype="string" name="pays" ordinal='1' />
+            <column datatype="string" name="pays_en" ordinal='2' />
+            <column datatype="string" name="iso3" ordinal='3' />
+            <column datatype="string" name="region" ordinal='4' />
+            <column datatype="string" name="code_sh" ordinal='5' />
+            <column datatype="string" name="categorie" ordinal='6' />
+            <column datatype="string" name="matiere" ordinal='7' />
+            <column datatype="string" name="mouvement" ordinal='8' />
+            <column datatype="real" name="valeur_chf" ordinal='9' />
+            <column datatype="real" name="valeur_usd" ordinal='10' />
+            <column datatype="integer" name="pieces" ordinal='11' />
+            <column datatype="integer" name="rang_pays" ordinal='12' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
         <metadata-records>
           <metadata-record class='column'>
             <remote-name>annee</remote-name>
@@ -50,6 +75,7 @@
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>pays</remote-name>
@@ -61,6 +87,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>pays_en</remote-name>
@@ -72,6 +99,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>iso3</remote-name>
@@ -83,6 +111,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>region</remote-name>
@@ -94,6 +123,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>code_sh</remote-name>
@@ -105,6 +135,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>categorie</remote-name>
@@ -116,6 +147,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>matiere</remote-name>
@@ -127,6 +159,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>mouvement</remote-name>
@@ -138,6 +171,7 @@
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>valeur_chf</remote-name>
@@ -149,6 +183,7 @@
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>valeur_usd</remote-name>
@@ -160,6 +195,7 @@
             <local-type>real</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>pieces</remote-name>
@@ -171,6 +207,7 @@
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>rang_pays</remote-name>
@@ -182,6 +219,7 @@
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
         </metadata-records>
       </connection>
@@ -282,7 +320,35 @@
       <column caption="Part de l'or dans les automatiques" datatype="real" default-format="p0.0%" name="[Calc_LuxeOr]" role="measure" type="quantitative">
         <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)' />
       </column>
-      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' _.fcp.SchemaViewerObjectModel.true...common-percentage='1' _.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption="exportations.csv" id="exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2">
+            <properties context=''>
+              <relation connection="textscan.a06248ef362c51cf" name="exportations.csv" table="[exportations#csv]" type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype="integer" name="annee" ordinal='0' />
+            <column datatype="string" name="pays" ordinal='1' />
+            <column datatype="string" name="pays_en" ordinal='2' />
+            <column datatype="string" name="iso3" ordinal='3' />
+            <column datatype="string" name="region" ordinal='4' />
+            <column datatype="string" name="code_sh" ordinal='5' />
+            <column datatype="string" name="categorie" ordinal='6' />
+            <column datatype="string" name="matiere" ordinal='7' />
+            <column datatype="string" name="mouvement" ordinal='8' />
+            <column datatype="real" name="valeur_chf" ordinal='9' />
+            <column datatype="real" name="valeur_usd" ordinal='10' />
+            <column datatype="integer" name="pieces" ordinal='11' />
+            <column datatype="integer" name="rang_pays" ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
     </datasource>
   </datasources>
   <worksheets>
@@ -502,7 +568,7 @@
           <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
           <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column caption="Total des exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_TotalMonde]" role="measure" type="quantitative"><calculation class='tableau' formula="{FIXED : SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)}" /></column><column caption="Part des exportations suisses" datatype="real" default-format="p0.0%" name="[Calc_PartMarche]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / MIN([Calc_TotalMonde])" /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" /><column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal"><calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" /></column><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PartMarche]" derivation="User" name="[usr:Calc_PartMarche:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Top15]" derivation="None" name="[none:Calc_Top15:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
           <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]"><groupfilter function='member' level="[none:Calc_Top15:nk]" member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
-          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
+          <sort class='computed' column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
           <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]</column></slices>
           <aggregation value='true' />
         </view>
@@ -606,7 +672,7 @@
           <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
           <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Région" datatype="string" name="[region]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column-instance column="[region]" derivation="None" name="[none:region:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
           
-          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:region:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
+          <sort class='computed' column="[federated.db591f0d94dd5d62eab9577b].[none:region:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
           
           <aggregation value='true' />
         </view>
@@ -814,7 +880,7 @@
           <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
           <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Segment" datatype="string" name="[Calc_Segment]" role="dimension" type="nominal"><calculation class='tableau' formula='IF ([code_sh] = "910121" OR [code_sh] = "910221") THEN "Mécanique automatique" ELSE "Autres montres" END' /></column><column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" /><column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal"><calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" /></column><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[matiere]" derivation="None" name="[none:matiere:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Segment]" derivation="None" name="[none:Calc_Segment:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_Top15]" derivation="None" name="[none:Calc_Top15:nk]" pivot='key' type="nominal" /></datasource-dependencies>
           <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]"><groupfilter function='member' level="[none:Calc_Segment:nk]" member='"Mécanique automatique"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter><filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]"><groupfilter function='member' level="[none:Calc_Top15:nk]" member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
-          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]" />
+          <sort class='computed' column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]" />
           <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]</column><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]</column></slices>
           <aggregation value='true' />
         </view>
@@ -838,9 +904,9 @@
       <style />
       <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
       <zones>
-        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Montres suisses à l'export</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Moins de montres, plus de valeur : où en est l'horlogerie suisse ?</run></formatted-text></zone>
-          <zone h='7000' id='12' mode='slider' name="KPI Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+        <zone h='100000' id='4' _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Montres suisses à l'export</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Moins de montres, plus de valeur : où en est l'horlogerie suisse ?</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="KPI Valeur" param="[Parameters].[Parameter 1]" _.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' w='26800' x='72000' y='1000' />
           <zone h='13000' id='13' name="KPI Valeur" w='18800' x='1200' y='9500' />
           <zone h='13000' id='14' name="KPI Évolution" w='18800' x='20800' y='9500' />
           <zone h='13000' id='15' name="KPI Pièces" w='18800' x='40400' y='9500' />
@@ -850,7 +916,7 @@
           <zone h='38000' id='19' name="Prix moyen" w='48000' x='50800' y='24000' />
           <zone h='32000' id='20' name="Mix matière" w='48400' x='1200' y='63500' />
           <zone h='32000' id='21' name="Segments" w='48000' x='50800' y='63500' />
-          <zone h='3500' id='22' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+          <zone h='3500' id='22' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{0B693772-AC27-5E19-B023-1FDB2255D365}" />
@@ -859,9 +925,9 @@
       <style />
       <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
       <zones>
-        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le cœur du luxe : la montre mécanique automatique</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)</run></formatted-text></zone>
-          <zone h='7000' id='12' mode='slider' name="KPI Auto Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+        <zone h='100000' id='4' _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le cœur du luxe : la montre mécanique automatique</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="KPI Auto Valeur" param="[Parameters].[Parameter 1]" _.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' w='26800' x='72000' y='1000' />
           <zone h='13000' id='13' name="KPI Auto Valeur" w='18800' x='1200' y='9500' />
           <zone h='13000' id='14' name="KPI Auto Évolution" w='18800' x='20800' y='9500' />
           <zone h='13000' id='15' name="KPI Auto Part" w='18800' x='40400' y='9500' />
@@ -870,7 +936,7 @@
           <zone h='36000' id='18' name="Poids des automatiques" w='48400' x='1200' y='24000' />
           <zone h='36000' id='19' name="Prix acier et or" w='48000' x='50800' y='24000' />
           <zone h='34500' id='20' name="Marchés des automatiques" w='97600' x='1200' y='61000' />
-          <zone h='3500' id='21' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+          <zone h='3500' id='21' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{D5426078-803A-5C8D-A3EE-3181B045149A}" />
@@ -879,14 +945,14 @@
       <style />
       <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
       <zones>
-        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Où vont les montres suisses ?</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Destinations, croissance et positionnement prix par pays</run></formatted-text></zone>
-          <zone h='7000' id='12' mode='slider' name="Top marchés" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+        <zone h='100000' id='4' _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Où vont les montres suisses ?</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Destinations, croissance et positionnement prix par pays</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="Top marchés" param="[Parameters].[Parameter 1]" _.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' w='26800' x='72000' y='1000' />
           <zone h='46000' id='13' name="Carte" w='58000' x='1200' y='9500' />
           <zone h='86000' id='14' name="Top marchés" w='38400' x='60400' y='9500' />
           <zone h='39000' id='15' name="Prix par marché" w='29000' x='1200' y='56500' />
           <zone h='39000' id='16' name="Régions" w='28000' x='31200' y='56500' />
-          <zone h='3500' id='17' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+          <zone h='3500' id='17' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{A5B9FA47-9DD6-5F88-89CA-CBCEE81CF023}" />
@@ -960,7 +1026,4 @@
         <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
         <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{D7B67EB1-2763-571F-A902-ED8081981FE6}" /></window>
   </windows>
-  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
-    <explanation-types />
-  </explain-data>
 </workbook>

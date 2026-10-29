@@ -8,7 +8,6 @@
 | Unicité des clés (année, pays, code SH) | aucun doublon | conforme |
 | Valeurs et quantités positives | 100 % | conforme |
 | Ordre de grandeur annuel | 10 à 40 Mrd CHF | 20 à 26 Mrd CHF depuis 2012 |
-| Classeur conforme au schéma XSD officiel de Tableau 2026.1 | valide | conforme |
 | Cohérence du classeur (champs référencés, formules, feuilles) | 0 erreur | conforme |
 
 ## 2. Recette des tableaux de bord (année 2025)

@@ -1,7 +1,7 @@
 """Génère le classeur Tableau (TWB, puis TWBX avec les données) à partir de ce script.
 
 « Dashboard as code » : sources, champs calculés, feuilles et tableaux de bord sont décrits
-ici, versionnés et validés contre le schéma XSD officiel de Tableau (tableau-document-schemas).
+ici, versionnés et contrôlés automatiquement (check_twb.py).
 
     python tableau/build_twb.py
 """
@@ -17,7 +17,19 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUT = ROOT / "tableau"
 NAME = "Montres-Suisses"
-VERSION = "26.1"
+VERSION = "18.1"   # version de format historique, que toutes les versions récentes de Tableau savent ouvrir
+SOURCE_BUILD = "2021.1.2 (20211.21.0511.0935)"
+# Manifeste repris d'un classeur réel enregistré par Tableau 2021.1 : il déclare les fonctionnalités de format
+# utilisées (identifiants de feuilles, modèle de données à objets, zones « type-v2 »...).
+MANIFEST = """    <GroupAction />
+    <_.fcp.GroupActionAddRemove.true...GroupActionAddRemove />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />"""
 NS = uuid.UUID("2b7e1a64-5c0d-4b8e-9f21-7a3c6d9e0f15")
 
 INK, SLATE, GOLD, GREEN, RULE, BG = "#14202B", "#5B6670", "#A37E2C", "#0F5132", "#D9D4C7", "#F7F5EF"
@@ -56,6 +68,17 @@ class Source:
     def table(self):
         return "[" + self.csv.replace(".csv", "#csv") + "]"
 
+    @property
+    def obj(self):
+        return self.csv + "_" + uid("obj", self.key)[1:33].replace("-", "")
+
+    def relation(self, tag: str, ind: int, cols: str) -> str:
+        sp = " " * ind
+        close = tag
+        return (f"{sp}<{tag} connection={a(self.conn)} name={a(self.csv)} table={a(self.table)} type='table'>\n"
+                f"{sp}  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>\n{cols}\n"
+                f"{sp}  </columns>\n{sp}</{close}>")
+
     def ref(self, inst: str) -> str:
         return f"[{self.name}].[{inst}]"
 
@@ -75,6 +98,7 @@ class Source:
             <local-type>{dt}</local-type>
             <aggregation>{agg}</aggregation>
             <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[{self.obj}]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>""")
         out = [f"""    <datasource caption={a(self.caption)} inline='true' name={a(self.name)} version={a(VERSION)}>
       <connection class='federated'>
@@ -83,11 +107,8 @@ class Source:
             <connection class='textscan' directory='Data/donnees' filename={a(self.csv)} password='' server='' />
           </named-connection>
         </named-connections>
-        <relation connection={a(self.conn)} name={a(self.csv)} table={a(self.table)} type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-{cols}
-          </columns>
-        </relation>
+{self.relation("_.fcp.ObjectModelEncapsulateLegacy.false...relation", 8, cols)}
+{self.relation("_.fcp.ObjectModelEncapsulateLegacy.true...relation", 8, cols)}
         <metadata-records>
 {chr(10).join(meta)}
         </metadata-records>
@@ -102,7 +123,22 @@ class Source:
             fm = f" default-format={a(fmt)}" if fmt else ""
             out.append(f"      <column caption={a(cap)} datatype={a(dt)}{fm} name={a('[' + cid + ']')} role={a(role)} type={a(typ)}>\n"
                        f"        <calculation class='tableau' formula={a(f)} />\n      </column>")
-        out.append("      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
+        out.append("      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' "
+                   "_.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' "
+                   "_.fcp.SchemaViewerObjectModel.true...common-percentage='1' "
+                   "_.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' "
+                   "dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
+        if self.geo:
+            out.append("      <semantic-values>\n        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />\n      </semantic-values>")
+        out.append(f"""      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption={a(self.csv)} id={a(self.obj)}>
+            <properties context=''>
+{self.relation("relation", 14, cols)}
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>""")
         out.append("    </datasource>")
         return "\n".join(out)
 
@@ -315,7 +351,7 @@ class Sheet:
         sort = ""
         if self.sort:
             dim, meas, direction = self.sort
-            sort = f"<computed-sort column={a(dim.ref)} direction={a(direction)} using={a(meas.ref)} />"
+            sort = f"<sort class='computed' column={a(dim.ref)} direction={a(direction)} using={a(meas.ref)} />"
         slices = ("<slices>" + "".join(f"<column>{escape(c)}</column>" for c in self.slices) + "</slices>") if self.slices else ""
         enc = "".join(f"<{k} column={a(i.ref)} />" for k, i in self.enc)
         pane_style = []
@@ -485,12 +521,12 @@ class Dash:
     def text(self, runs, x, y, w, h):
         body = "".join(f"<run bold={a('true' if b else 'false')} fontcolor={a(c)} fontsize='{sz}'>{escape(t)}</run>"
                        + ("<run>Æ&#10;</run>" if nl else "") for t, sz, c, b, nl in runs)
-        self.zones.append(f"<zone h='{h}' id='{self.zid()}' type-v2='text' w='{w}' x='{x}' y='{y}'>"
+        self.zones.append(f"<zone h='{h}' id='{self.zid()}' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='{w}' x='{x}' y='{y}'>"
                           f"<formatted-text>{body}</formatted-text></zone>")
 
     def param(self, x, y, w, h, sheet):
         self.zones.append(f"<zone h='{h}' id='{self.zid()}' mode='slider' name={a(sheet)} param={a(PARAM)} "
-                          f"type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
+                          f"_.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
 
     def xml(self) -> str:
         z = "\n          ".join(self.zones)
@@ -498,7 +534,7 @@ class Dash:
       <style />
       <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
       <zones>
-        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='4' _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' w='100000' x='0' y='0'>
           {z}
         </zone>
       </zones>
@@ -576,9 +612,9 @@ def build() -> Path:
     windows += [f"    <window class='worksheet' hidden='true' maximized='true' name={a(s.name)}>{CARDS}"
                 f"<simple-id uuid={a(uid('ww', s.name))} /></window>" for s in sheets]
     xml = f"""<?xml version='1.0' encoding='utf-8' ?>
-<workbook original-version={a(VERSION)} source-build='0.0.0 (0000.0.0.0)' source-platform='win' version={a(VERSION)} xmlns:user='http://www.tableausoftware.com/xml/user'>
+<workbook original-version={a(VERSION)} source-build={a(SOURCE_BUILD)} source-platform='win' version={a(VERSION)} xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
-    <ManifestByVersion />
+{MANIFEST}
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -597,9 +633,6 @@ def build() -> Path:
   <windows source-height='30'>
 {chr(10).join(windows)}
   </windows>
-  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
-    <explanation-types />
-  </explain-data>
 </workbook>
 """.replace("{YEAR}", str(year))
     twb = OUT / f"{NAME}.twb"

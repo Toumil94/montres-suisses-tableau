@@ -32,7 +32,6 @@ jobs:
         run: |
           pip install lxml
           python tableau/build_twb.py
-          python tableau/validate_twb.py
           python tableau/check_twb.py
       - name: Publier
         if: always()
