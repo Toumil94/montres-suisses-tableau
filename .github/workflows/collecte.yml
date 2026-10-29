@@ -11,7 +11,7 @@ permissions:
 jobs:
   collecte:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -19,6 +19,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - name: Télécharger (UN Comtrade, BNS)
+        timeout-minutes: 35   # au-delà, on publie ce qui a été collecté et la suite reprend au prochain lancement
         run: python pipeline/fetch.py
       - name: Construire les tables
         id: build
@@ -30,6 +31,7 @@ jobs:
           pip install lxml
           python tableau/build_twb.py
           python tableau/validate_twb.py
+          python tableau/check_twb.py
       - name: Publier
         if: always()
         run: |

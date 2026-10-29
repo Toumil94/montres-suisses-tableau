@@ -70,6 +70,10 @@ def pays(iso3: str) -> tuple[str, str, str]:
     return fr, en, reg
 
 
+def charger(dossier: str) -> list[dict]:
+    return [r for f in sorted((RAW / dossier).glob("*.json")) for r in json.loads(f.read_text(encoding="utf-8"))]
+
+
 def taux_chf() -> pd.DataFrame:
     """Cours moyen mensuel CHF pour 1 USD (BNS, cube devkum)."""
     lines = (RAW / "snb_devkum.csv").read_text(encoding="utf-8").splitlines()
@@ -87,7 +91,7 @@ def main() -> None:
     fx = taux_chf()
     fx_an = fx.groupby("annee")["chf_par_usd"].mean()
 
-    raw = pd.DataFrame(json.loads((RAW / "comtrade_annuel.json").read_text(encoding="utf-8")))
+    raw = pd.DataFrame(charger("annuel"))
     raw["cmdCode"] = raw["cmdCode"].astype(str)
     raw = raw[raw["cmdCode"].isin(CODES)]
     raw["annee"] = raw["refYear"].astype(int) if "refYear" in raw else raw["period"].astype(str).str[:4].astype(int)
@@ -114,7 +118,7 @@ def main() -> None:
     df = df.sort_values(["annee", "rang_pays", "code_sh"])
     df.to_csv(OUT / "exportations.csv", index=False)
 
-    men = pd.DataFrame(json.loads((RAW / "comtrade_mensuel.json").read_text(encoding="utf-8")))
+    men = pd.DataFrame(charger("mensuel"))
     men["cmdCode"] = men["cmdCode"].astype(str)
     men = men[men["cmdCode"].isin(CODES) & (men["partnerCode"] == 0)].copy()
     men["annee"] = men["period"].astype(str).str[:4].astype(int)

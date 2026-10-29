@@ -1,0 +1,1108 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook original-version="26.1" source-build='0.0.0 (0000.0.0.0)' source-platform='win' version="26.1" xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <ManifestByVersion />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version="26.1">
+      <aliases enabled='yes' />
+      <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'>
+        <calculation class='tableau' formula='2025' />
+        <range granularity='1' max='2025' min='2012' />
+      </column>
+    </datasource>
+    <datasource caption="Exportations annuelles" inline='true' name="federated.db591f0d94dd5d62eab9577b" version="26.1">
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Exportations annuelles" name="textscan.a06248ef362c51cf">
+            <connection class='textscan' directory='Data/donnees' filename="exportations.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.a06248ef362c51cf" name="exportations.csv" table="[exportations#csv]" type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype="integer" name="annee" ordinal='0' />
+            <column datatype="string" name="pays" ordinal='1' />
+            <column datatype="string" name="pays_en" ordinal='2' />
+            <column datatype="string" name="iso3" ordinal='3' />
+            <column datatype="string" name="region" ordinal='4' />
+            <column datatype="string" name="code_sh" ordinal='5' />
+            <column datatype="string" name="categorie" ordinal='6' />
+            <column datatype="string" name="matiere" ordinal='7' />
+            <column datatype="string" name="mouvement" ordinal='8' />
+            <column datatype="real" name="valeur_chf" ordinal='9' />
+            <column datatype="real" name="valeur_usd" ordinal='10' />
+            <column datatype="integer" name="pieces" ordinal='11' />
+            <column datatype="integer" name="rang_pays" ordinal='12' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>annee</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[annee]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>annee</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pays</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[pays]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>pays</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pays_en</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[pays_en]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>pays_en</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>iso3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[iso3]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>iso3</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>region</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[region]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>region</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_sh</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_sh]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>code_sh</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>categorie</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[categorie]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>categorie</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>matiere</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[matiere]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>matiere</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mouvement</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[mouvement]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>mouvement</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>valeur_chf</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[valeur_chf]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>valeur_chf</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>valeur_usd</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[valeur_usd]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>valeur_usd</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pieces</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[pieces]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>pieces</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rang_pays</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[rang_pays]</local-name>
+            <parent-name>[exportations.csv]</parent-name>
+            <remote-alias>rang_pays</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" />
+      <column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" />
+      <column caption="Pays (carte)" datatype="string" name="[pays_en]" role="dimension" semantic-role="[Country].[Name]" type="nominal" />
+      <column caption="Code ISO" datatype="string" name="[iso3]" role="dimension" type="nominal" />
+      <column caption="Région" datatype="string" name="[region]" role="dimension" type="nominal" />
+      <column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" />
+      <column caption="Catégorie" datatype="string" name="[categorie]" role="dimension" type="nominal" />
+      <column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" />
+      <column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" />
+      <column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" />
+      <column caption="Valeur (USD)" datatype="real" name="[valeur_usd]" role="measure" type="quantitative" />
+      <column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" />
+      <column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" />
+      <column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" />
+      </column>
+      <column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" />
+      </column>
+      <column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" />
+      </column>
+      <column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" />
+      </column>
+      <column caption="Exportations 2019" datatype="real" default-format="n#,##0" name="[Calc_Valeur2019]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM(IF [annee] = 2019 THEN [valeur_chf] END)" />
+      </column>
+      <column caption="Niveau vs 2019" datatype="real" default-format="p0%" name="[Calc_Niveau2019]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_Valeur2019]" />
+      </column>
+      <column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" />
+      </column>
+      <column caption="Pièces (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_PiecesN1]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [pieces] END)" />
+      </column>
+      <column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" />
+      </column>
+      <column caption="Prix moyen N-1" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyenN1]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurN1] / [Calc_PiecesN1]" />
+      </column>
+      <column caption="Évolution du prix moyen" datatype="real" default-format="p0.0%" name="[Calc_PrixEvolution]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="([Calc_PrixMoyen] - [Calc_PrixMoyenN1]) / [Calc_PrixMoyenN1]" />
+      </column>
+      <column caption="Prix moyen (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyenTous]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM([valeur_chf]) / SUM([pieces])" />
+      </column>
+      <column caption="Part des montres mécaniques (valeur)" datatype="real" default-format="p0.0%" name="[Calc_PartMeca]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND STARTSWITH([mouvement], "Mécanique") THEN [valeur_chf] END) / [Calc_ValeurAnnee]' />
+      </column>
+      <column caption="Part des boîtes en métal précieux (valeur)" datatype="real" default-format="p0.0%" name="[Calc_PartPrecieux]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND [matiere] = "Métal précieux" THEN [valeur_chf] END) / [Calc_ValeurAnnee]' />
+      </column>
+      <column caption="Total des exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_TotalMonde]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="{FIXED : SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)}" />
+      </column>
+      <column caption="Part des exportations suisses" datatype="real" default-format="p0.0%" name="[Calc_PartMarche]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurAnnee] / MIN([Calc_TotalMonde])" />
+      </column>
+      <column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal">
+        <calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" />
+      </column>
+      <column caption="Contribution à la croissance (CHF)" datatype="real" default-format="n#,##0" name="[Calc_Contribution]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_ValeurAnnee] - [Calc_ValeurN1]" />
+      </column>
+      <column caption="Période" datatype="string" name="[Calc_Periode]" role="dimension" type="nominal">
+        <calculation class='tableau' formula='IF [annee] = [Parameters].[Parameter 1] THEN "Année sélectionnée" ELSE "Autres années" END' />
+      </column>
+      <column caption="Exportations totales (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurToutesMrd]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" />
+      </column>
+      <column caption="Segment" datatype="string" name="[Calc_Segment]" role="dimension" type="nominal">
+        <calculation class='tableau' formula='IF ([code_sh] = "910121" OR [code_sh] = "910221") THEN "Mécanique automatique" ELSE "Autres montres" END' />
+      </column>
+      <column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' />
+      </column>
+      <column caption="Automatiques N-1 (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeurN1]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] - 1 AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' />
+      </column>
+      <column caption="Évolution des automatiques vs N-1" datatype="real" default-format="p0.0%" name="[Calc_LuxeEvolution]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="([Calc_LuxeValeur] - [Calc_LuxeValeurN1]) / [Calc_LuxeValeurN1]" />
+      </column>
+      <column caption="Automatiques exportées (pièces)" datatype="real" default-format="n#,##0" name="[Calc_LuxePieces]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [pieces] END)' />
+      </column>
+      <column caption="Prix moyen d'une automatique (CHF)" datatype="real" default-format="n#,##0" name="[Calc_LuxePrix]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_LuxeValeur] * 1000000000 / [Calc_LuxePieces]" />
+      </column>
+      <column caption="Part des automatiques dans la valeur" datatype="real" default-format="p0.0%" name="[Calc_LuxePart]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="[Calc_LuxeValeur] * 1000000000 / [Calc_ValeurAnnee]" />
+      </column>
+      <column caption="Part de l'or dans les automatiques" datatype="real" default-format="p0.0%" name="[Calc_LuxeOr]" role="measure" type="quantitative">
+        <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)' />
+      </column>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+    </datasource>
+    <datasource caption="Exportations mensuelles" inline='true' name="federated.73f164900186b053985c5b60" version="26.1">
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption="Exportations mensuelles" name="textscan.b49ef500752d5266">
+            <connection class='textscan' directory='Data/donnees' filename="mensuel.csv" password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection="textscan.b49ef500752d5266" name="mensuel.csv" table="[mensuel#csv]" type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype="date" name="date" ordinal='0' />
+            <column datatype="string" name="code_sh" ordinal='1' />
+            <column datatype="string" name="matiere" ordinal='2' />
+            <column datatype="string" name="mouvement" ordinal='3' />
+            <column datatype="real" name="valeur_chf" ordinal='4' />
+            <column datatype="integer" name="pieces" ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>code_sh</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[code_sh]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>code_sh</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>matiere</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[matiere]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>matiere</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mouvement</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[mouvement]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>mouvement</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>valeur_chf</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[valeur_chf]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>valeur_chf</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pieces</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[pieces]</local-name>
+            <parent-name>[mensuel.csv]</parent-name>
+            <remote-alias>pieces</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column caption="Mois" datatype="date" name="[date]" role="dimension" type="ordinal" />
+      <column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" />
+      <column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" />
+      <column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" />
+      <column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" />
+      <column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" />
+      <column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_MensuelMrd]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" />
+      </column>
+      <column caption="Prix moyen (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMensuel]" role="measure" type="quantitative">
+        <calculation class='tableau' formula="SUM([valeur_chf]) / SUM([pieces])" />
+      </column>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name="KPI Valeur">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Exportations (Mrd CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{FAD6FD8E-DCA9-53FD-9D6D-D7DBA0D10D82}" />
+    </worksheet>
+    <worksheet name="KPI Évolution">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Évolution vs N-1</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{F4F49B7B-ACDD-588E-9983-1721F0ED91EA}" />
+    </worksheet>
+    <worksheet name="KPI Prix">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Prix moyen par montre</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{B8D7451F-4576-5B42-B1EF-628202529AF7}" />
+    </worksheet>
+    <worksheet name="KPI Mécanique">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Part mécanique</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Part des montres mécaniques (valeur)" datatype="real" default-format="p0.0%" name="[Calc_PartMeca]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND STARTSWITH([mouvement], "Mécanique") THEN [valeur_chf] END) / [Calc_ValeurAnnee]' /></column><column-instance column="[Calc_PartMeca]" derivation="User" name="[usr:Calc_PartMeca:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PartMeca:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{DAB5827F-742A-572F-8229-E50756FA1B50}" />
+    </worksheet>
+    <worksheet name="KPI Pièces">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Montres exportées</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column-instance column="[Calc_PiecesAnnee]" derivation="User" name="[usr:Calc_PiecesAnnee:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PiecesAnnee:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{B0DD4D61-804D-59E9-A373-69A22E917A51}" />
+    </worksheet>
+    <worksheet name="Tendance">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Exportations de montres par année (Mrd CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations totales (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurToutesMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" /></column><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Période" datatype="string" name="[Calc_Periode]" role="dimension" type="nominal"><calculation class='tableau' formula='IF [annee] = [Parameters].[Parameter 1] THEN "Année sélectionnée" ELSE "Autres années" END' /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column-instance column="[Calc_ValeurToutesMrd]" derivation="User" name="[usr:Calc_ValeurToutesMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[annee]" derivation="None" name="[none:annee:ok]" pivot='key' type="ordinal" /><column-instance column="[Calc_Periode]" derivation="None" name="[none:Calc_Periode:nk]" pivot='key' type="nominal" /><column-instance column="[pieces]" derivation="Sum" name="[sum:pieces:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Periode:nk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[sum:pieces:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurToutesMrd:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:annee:ok]</cols>
+      </table>
+      <simple-id uuid="{9B432DC2-6FC8-5552-804F-25E6B1EA11B2}" />
+    </worksheet>
+    <worksheet name="Prix moyen">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Prix moyen à l'export par montre (CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Prix moyen (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyenTous]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / SUM([pieces])" /></column><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column-instance column="[Calc_PrixMoyenTous]" derivation="User" name="[usr:Calc_PrixMoyenTous:qk]" pivot='key' type="quantitative" /><column-instance column="[annee]" derivation="None" name="[none:annee:ok]" pivot='key' type="ordinal" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Line" />
+            
+            <style><style-rule element='mark'><format attr='mark-color' value="#A37E2C" /><format attr='mark-labels-show' value='true' /><format attr='mark-labels-cull' value='true' /></style-rule></style>
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyenTous:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:annee:ok]</cols>
+      </table>
+      <simple-id uuid="{4231070D-EB0E-530B-8613-5C3A647A5053}" />
+    </worksheet>
+    <worksheet name="Mix matière">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Valeur par matière de la boîte</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" /><column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[matiere]" derivation="None" name="[none:matiere:nk]" pivot='key' type="nominal" /><column-instance column="[mouvement]" derivation="None" name="[none:mouvement:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[none:mouvement:nk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:matiere:nk]</cols>
+      </table>
+      <simple-id uuid="{6C3C1ED3-B37A-56C4-B1A6-F52DA4F3FD7F}" />
+    </worksheet>
+    <worksheet name="Top marchés">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Top 15 des marchés (valeur de l'année)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column caption="Total des exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_TotalMonde]" role="measure" type="quantitative"><calculation class='tableau' formula="{FIXED : SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)}" /></column><column caption="Part des exportations suisses" datatype="real" default-format="p0.0%" name="[Calc_PartMarche]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / MIN([Calc_TotalMonde])" /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" /><column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal"><calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" /></column><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PartMarche]" derivation="User" name="[usr:Calc_PartMarche:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Top15]" derivation="None" name="[none:Calc_Top15:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]"><groupfilter function='member' level="[none:Calc_Top15:nk]" member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
+          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
+          <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]</column></slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PartMarche:qk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /></encodings>
+            <style><style-rule element='mark'><format attr='mark-labels-show' value='true' /><format attr='mark-labels-cull' value='true' /></style-rule></style>
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]</cols>
+      </table>
+      <simple-id uuid="{D6747348-2A45-5FC3-9D6E-3DF26E6B3C00}" />
+    </worksheet>
+    <worksheet name="Carte">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Destinations des montres suisses</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Pays (carte)" datatype="string" name="[pays_en]" role="dimension" semantic-role="[Country].[Name]" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column datatype='real' name='[Latitude (generated)]' role='measure' type='quantitative' user:auto-column='latitude' /><column datatype='real' name='[Longitude (generated)]' role='measure' type='quantitative' user:auto-column='longitude' /><column-instance column="[pays_en]" derivation="None" name="[none:pays_en:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Multipolygon" />
+            <encodings><lod column="[federated.db591f0d94dd5d62eab9577b].[none:pays_en:nk]" /><color column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[Latitude (generated)]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid="{C2E23EFB-18A0-5EC2-81CA-C27DF7CBA4F6}" />
+    </worksheet>
+    <worksheet name="Prix par marché">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Volume et prix moyen par marché</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Région" datatype="string" name="[region]" role="dimension" type="nominal" /><column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" /><column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal"><calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" /></column><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PiecesAnnee]" derivation="User" name="[usr:Calc_PiecesAnnee:qk]" pivot='key' type="quantitative" /><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /><column-instance column="[region]" derivation="None" name="[none:region:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_Top15]" derivation="None" name="[none:Calc_Top15:nk]" pivot='key' type="nominal" /></datasource-dependencies>
+          <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]"><groupfilter function='member' level="[none:Calc_Top15:nk]" member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
+          
+          <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]</column></slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Circle" />
+            <encodings><lod column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" /><size column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" /><color column="[federated.db591f0d94dd5d62eab9577b].[none:region:nk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PiecesAnnee:qk]</cols>
+      </table>
+      <simple-id uuid="{56600CAB-06A8-500E-97DA-669091A002AC}" />
+    </worksheet>
+    <worksheet name="Segments">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Valeur et prix moyen par segment</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" /><column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column-instance column="[matiere]" derivation="None" name="[none:matiere:nk]" pivot='key' type="nominal" /><column-instance column="[mouvement]" derivation="None" name="[none:mouvement:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Square" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" /><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[none:matiere:nk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:mouvement:nk]</cols>
+      </table>
+      <simple-id uuid="{FAB52590-0685-578E-A006-B6AA7BB9918A}" />
+    </worksheet>
+    <worksheet name="Régions">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Valeur par région</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Région" datatype="string" name="[region]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Exportations (année précédente)" datatype="real" default-format="n#,##0" name="[Calc_ValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] - 1 THEN [valeur_chf] END)" /></column><column caption="Évolution vs N-1" datatype="real" default-format="p0.0%" name="[Calc_Evolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_ValeurAnnee] - [Calc_ValeurN1]) / [Calc_ValeurN1]" /></column><column-instance column="[region]" derivation="None" name="[none:region:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Evolution]" derivation="User" name="[usr:Calc_Evolution:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_ValeurAnnee]" derivation="User" name="[usr:Calc_ValeurAnnee:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:region:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" />
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /></encodings>
+            <style><style-rule element='mark'><format attr='mark-labels-show' value='true' /><format attr='mark-labels-cull' value='true' /></style-rule></style>
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[none:region:nk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]</cols>
+      </table>
+      <simple-id uuid="{42622AA3-DB61-50E7-BBE7-542ED0F22108}" />
+    </worksheet>
+    <worksheet name="KPI Auto Valeur">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Automatiques (Mrd CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column-instance column="[Calc_LuxeValeur]" derivation="User" name="[usr:Calc_LuxeValeur:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_LuxeValeur:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{09962814-0080-5F65-9A44-D883EA97314C}" />
+    </worksheet>
+    <worksheet name="KPI Auto Évolution">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Évolution vs N-1</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column caption="Automatiques N-1 (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeurN1]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] - 1 AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column caption="Évolution des automatiques vs N-1" datatype="real" default-format="p0.0%" name="[Calc_LuxeEvolution]" role="measure" type="quantitative"><calculation class='tableau' formula="([Calc_LuxeValeur] - [Calc_LuxeValeurN1]) / [Calc_LuxeValeurN1]" /></column><column-instance column="[Calc_LuxeEvolution]" derivation="User" name="[usr:Calc_LuxeEvolution:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_LuxeEvolution:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{E6686A98-1541-5420-BF5E-9B2BECE391D6}" />
+    </worksheet>
+    <worksheet name="KPI Auto Part">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Part de la valeur suisse</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column caption="Part des automatiques dans la valeur" datatype="real" default-format="p0.0%" name="[Calc_LuxePart]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_LuxeValeur] * 1000000000 / [Calc_ValeurAnnee]" /></column><column-instance column="[Calc_LuxePart]" derivation="User" name="[usr:Calc_LuxePart:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_LuxePart:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{2086FB88-B2B2-520F-A3CA-2529AC2075A7}" />
+    </worksheet>
+    <worksheet name="KPI Auto Prix">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Prix moyen par montre</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Automatiques exportées (pièces)" datatype="real" default-format="n#,##0" name="[Calc_LuxePieces]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [pieces] END)' /></column><column caption="Prix moyen d'une automatique (CHF)" datatype="real" default-format="n#,##0" name="[Calc_LuxePrix]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_LuxeValeur] * 1000000000 / [Calc_LuxePieces]" /></column><column-instance column="[Calc_LuxePrix]" derivation="User" name="[usr:Calc_LuxePrix:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_LuxePrix:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{99F9F7CB-7F17-580C-8659-F45123DF9D2A}" />
+    </worksheet>
+    <worksheet name="KPI Auto Or">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Part de l'or</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Automatiques (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_LuxeValeur]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND ([code_sh] = "910121" OR [code_sh] = "910221") THEN [valeur_chf] END) / 1000000000' /></column><column caption="Part de l'or dans les automatiques" datatype="real" default-format="p0.0%" name="[Calc_LuxeOr]" role="measure" type="quantitative"><calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)' /></column><column-instance column="[Calc_LuxeOr]" derivation="User" name="[usr:Calc_LuxeOr:qk]" pivot='key' type="quantitative" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Text" />
+            <encodings><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_LuxeOr:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows></rows>
+        <cols></cols>
+      </table>
+      <simple-id uuid="{1D4268CD-61E1-5818-BACB-0180D88A657A}" />
+    </worksheet>
+    <worksheet name="Poids des automatiques">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Exportations par année : les automatiques face aux autres montres (Mrd CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations totales (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurToutesMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" /></column><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Segment" datatype="string" name="[Calc_Segment]" role="dimension" type="nominal"><calculation class='tableau' formula='IF ([code_sh] = "910121" OR [code_sh] = "910221") THEN "Mécanique automatique" ELSE "Autres montres" END' /></column><column-instance column="[Calc_ValeurToutesMrd]" derivation="User" name="[usr:Calc_ValeurToutesMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[annee]" derivation="None" name="[none:annee:ok]" pivot='key' type="ordinal" /><column-instance column="[Calc_Segment]" derivation="None" name="[none:Calc_Segment:nk]" pivot='key' type="nominal" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurToutesMrd:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:annee:ok]</cols>
+      </table>
+      <simple-id uuid="{BA151621-8A1C-561E-9B31-25B489606540}" />
+    </worksheet>
+    <worksheet name="Prix acier et or">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Prix moyen d'une automatique à l'export : acier et or (CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Prix moyen (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyenTous]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / SUM([pieces])" /></column><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" /><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Segment" datatype="string" name="[Calc_Segment]" role="dimension" type="nominal"><calculation class='tableau' formula='IF ([code_sh] = "910121" OR [code_sh] = "910221") THEN "Mécanique automatique" ELSE "Autres montres" END' /></column><column-instance column="[Calc_PrixMoyenTous]" derivation="User" name="[usr:Calc_PrixMoyenTous:qk]" pivot='key' type="quantitative" /><column-instance column="[annee]" derivation="None" name="[none:annee:ok]" pivot='key' type="ordinal" /><column-instance column="[matiere]" derivation="None" name="[none:matiere:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_Segment]" derivation="None" name="[none:Calc_Segment:nk]" pivot='key' type="nominal" /></datasource-dependencies>
+          <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]"><groupfilter function='member' level="[none:Calc_Segment:nk]" member='"Mécanique automatique"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
+          
+          <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]</column></slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Line" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[none:matiere:nk]" /></encodings>
+            <style><style-rule element='mark'><format attr='mark-labels-show' value='true' /><format attr='mark-labels-cull' value='true' /></style-rule></style>
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyenTous:qk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[none:annee:ok]</cols>
+      </table>
+      <simple-id uuid="{ECC4B184-B9AA-5949-A671-412B0EE766C8}" />
+    </worksheet>
+    <worksheet name="Marchés des automatiques">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Top 15 des marchés : automatiques en acier et en or (Mrd CHF)</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource name='Parameters' /><datasource caption="Exportations annuelles" name="federated.db591f0d94dd5d62eab9577b" /></datasources>
+          <datasource-dependencies datasource='Parameters'><column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='2025'><calculation class='tableau' formula='2025' /><range granularity='1' max='2025' min='2012' /></column></datasource-dependencies>
+          <datasource-dependencies datasource="federated.db591f0d94dd5d62eab9577b"><column caption="Pays" datatype="string" name="[pays]" role="dimension" type="nominal" /><column caption="Année" datatype="integer" name="[annee]" role="dimension" type="ordinal" /><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (année)" datatype="real" default-format="n#,##0" name="[Calc_ValeurAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [valeur_chf] END)" /></column><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_ValeurMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / 1000000000" /></column><column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" /><column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" /><column caption="Pièces (année)" datatype="real" default-format="n#,##0" name="[Calc_PiecesAnnee]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM(IF [annee] = [Parameters].[Parameter 1] THEN [pieces] END)" /></column><column caption="Prix moyen à l'export (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMoyen]" role="measure" type="quantitative"><calculation class='tableau' formula="[Calc_ValeurAnnee] / [Calc_PiecesAnnee]" /></column><column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" /><column caption="Segment" datatype="string" name="[Calc_Segment]" role="dimension" type="nominal"><calculation class='tableau' formula='IF ([code_sh] = "910121" OR [code_sh] = "910221") THEN "Mécanique automatique" ELSE "Autres montres" END' /></column><column caption="Rang du pays dans l'année" datatype="integer" name="[rang_pays]" role="measure" type="quantitative" /><column caption="Top 15 des marchés" datatype="boolean" name="[Calc_Top15]" role="dimension" type="nominal"><calculation class='tableau' formula="{FIXED [pays] : MIN(IF [annee] = [Parameters].[Parameter 1] THEN [rang_pays] END)} &lt;= 15" /></column><column-instance column="[pays]" derivation="None" name="[none:pays:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_ValeurMrd]" derivation="User" name="[usr:Calc_ValeurMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[matiere]" derivation="None" name="[none:matiere:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_PrixMoyen]" derivation="User" name="[usr:Calc_PrixMoyen:qk]" pivot='key' type="quantitative" /><column-instance column="[Calc_Segment]" derivation="None" name="[none:Calc_Segment:nk]" pivot='key' type="nominal" /><column-instance column="[Calc_Top15]" derivation="None" name="[none:Calc_Top15:nk]" pivot='key' type="nominal" /></datasource-dependencies>
+          <filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]"><groupfilter function='member' level="[none:Calc_Segment:nk]" member='"Mécanique automatique"' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter><filter class='categorical' column="[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]"><groupfilter function='member' level="[none:Calc_Top15:nk]" member="true" user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>
+          <computed-sort column="[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]" direction="DESC" using="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]" />
+          <slices><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Segment:nk]</column><column>[federated.db591f0d94dd5d62eab9577b].[none:Calc_Top15:nk]</column></slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Bar" />
+            <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[none:matiere:nk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.db591f0d94dd5d62eab9577b].[none:pays:nk]</rows>
+        <cols>[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurMrd:qk]</cols>
+      </table>
+      <simple-id uuid="{A9FE0290-4A13-5BC3-AE3D-F899A0F5BE69}" />
+    </worksheet>
+    <worksheet name="Courbe mensuelle">
+      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Exportations mensuelles (CHF), une ligne par année</run></formatted-text></title></layout-options>
+      <table>
+        <view>
+          <datasources><datasource caption="Exportations mensuelles" name="federated.73f164900186b053985c5b60" /></datasources>
+          
+          <datasource-dependencies datasource="federated.73f164900186b053985c5b60"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_MensuelMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" /></column><column caption="Mois" datatype="date" name="[date]" role="dimension" type="ordinal" /><column-instance column="[Calc_MensuelMrd]" derivation="User" name="[usr:Calc_MensuelMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[date]" derivation="Month" name="[mn:date:ok]" pivot='key' type="ordinal" /><column-instance column="[date]" derivation="Year" name="[yr:date:ok]" pivot='key' type="ordinal" /></datasource-dependencies>
+          
+          
+          
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view><breakdown value='auto' /></view>
+            <mark class="Line" />
+            <encodings><color column="[federated.73f164900186b053985c5b60].[yr:date:ok]" /></encodings>
+            
+          </pane>
+        </panes>
+        <rows>[federated.73f164900186b053985c5b60].[usr:Calc_MensuelMrd:qk]</rows>
+        <cols>[federated.73f164900186b053985c5b60].[mn:date:ok]</cols>
+      </table>
+      <simple-id uuid="{1EE363E1-5907-5B96-88B9-CE776F0A40D0}" />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name="Vue d'ensemble">
+      <style />
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Montres suisses à l'export</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Moins de montres, plus de valeur : où en est l'horlogerie suisse ?</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="KPI Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='13000' id='13' name="KPI Valeur" w='18800' x='1200' y='9500' />
+          <zone h='13000' id='14' name="KPI Évolution" w='18800' x='20800' y='9500' />
+          <zone h='13000' id='15' name="KPI Pièces" w='18800' x='40400' y='9500' />
+          <zone h='13000' id='16' name="KPI Prix" w='18800' x='60000' y='9500' />
+          <zone h='13000' id='17' name="KPI Mécanique" w='18800' x='79600' y='9500' />
+          <zone h='38000' id='18' name="Tendance" w='48400' x='1200' y='24000' />
+          <zone h='38000' id='19' name="Prix moyen" w='48000' x='50800' y='24000' />
+          <zone h='32000' id='20' name="Mix matière" w='48400' x='1200' y='63500' />
+          <zone h='32000' id='21' name="Segments" w='48000' x='50800' y='63500' />
+          <zone h='3500' id='22' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{0B693772-AC27-5E19-B023-1FDB2255D365}" />
+    </dashboard>
+    <dashboard name="Luxe mécanique">
+      <style />
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le cœur du luxe : la montre mécanique automatique</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="KPI Auto Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='13000' id='13' name="KPI Auto Valeur" w='18800' x='1200' y='9500' />
+          <zone h='13000' id='14' name="KPI Auto Évolution" w='18800' x='20800' y='9500' />
+          <zone h='13000' id='15' name="KPI Auto Part" w='18800' x='40400' y='9500' />
+          <zone h='13000' id='16' name="KPI Auto Prix" w='18800' x='60000' y='9500' />
+          <zone h='13000' id='17' name="KPI Auto Or" w='18800' x='79600' y='9500' />
+          <zone h='36000' id='18' name="Poids des automatiques" w='48400' x='1200' y='24000' />
+          <zone h='36000' id='19' name="Prix acier et or" w='48000' x='50800' y='24000' />
+          <zone h='34500' id='20' name="Marchés des automatiques" w='97600' x='1200' y='61000' />
+          <zone h='3500' id='21' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{D5426078-803A-5C8D-A3EE-3181B045149A}" />
+    </dashboard>
+    <dashboard name="Marchés">
+      <style />
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Où vont les montres suisses ?</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Destinations, croissance et positionnement prix par pays</run></formatted-text></zone>
+          <zone h='7000' id='12' mode='slider' name="Top marchés" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='46000' id='13' name="Carte" w='58000' x='1200' y='9500' />
+          <zone h='86000' id='14' name="Top marchés" w='38400' x='60400' y='9500' />
+          <zone h='39000' id='15' name="Prix par marché" w='29000' x='1200' y='56500' />
+          <zone h='39000' id='16' name="Régions" w='28000' x='31200' y='56500' />
+          <zone h='3500' id='17' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{A5B9FA47-9DD6-5F88-89CA-CBCEE81CF023}" />
+    </dashboard>
+    <dashboard name="Saisonnalité">
+      <style />
+      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='11' type-v2='text' w='97600' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le rythme de l'année</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Exportations mensuelles, toutes destinations confondues</run></formatted-text></zone>
+          <zone h='85000' id='12' name="Courbe mensuelle" w='97600' x='1200' y='9500' />
+          <zone h='3500' id='13' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        </zone>
+      </zones>
+      <simple-id uuid="{73222491-AD52-5892-A82A-AA057929670D}" />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='dashboard' maximized='true' name="Vue d'ensemble"><viewpoints><viewpoint name="KPI Valeur" /><viewpoint name="KPI Évolution" /><viewpoint name="KPI Pièces" /><viewpoint name="KPI Prix" /><viewpoint name="KPI Mécanique" /><viewpoint name="Tendance" /><viewpoint name="Prix moyen" /><viewpoint name="Mix matière" /><viewpoint name="Segments" /></viewpoints><active id='-1' /><simple-id uuid="{EA2D4BE1-B51F-515B-8E82-0B94D7D3AAE6}" /></window>
+    <window class='dashboard' maximized='true' name="Luxe mécanique"><viewpoints><viewpoint name="KPI Auto Valeur" /><viewpoint name="KPI Auto Évolution" /><viewpoint name="KPI Auto Part" /><viewpoint name="KPI Auto Prix" /><viewpoint name="KPI Auto Or" /><viewpoint name="Poids des automatiques" /><viewpoint name="Prix acier et or" /><viewpoint name="Marchés des automatiques" /></viewpoints><active id='-1' /><simple-id uuid="{C6B50D7D-A45C-541B-B612-CAF93B74B7CE}" /></window>
+    <window class='dashboard' maximized='true' name="Marchés"><viewpoints><viewpoint name="Carte" /><viewpoint name="Top marchés" /><viewpoint name="Prix par marché" /><viewpoint name="Régions" /></viewpoints><active id='-1' /><simple-id uuid="{3116F2B2-561B-5097-956B-6753A5D772DE}" /></window>
+    <window class='dashboard' maximized='true' name="Saisonnalité"><viewpoints><viewpoint name="Courbe mensuelle" /></viewpoints><active id='-1' /><simple-id uuid="{7085DB03-4F69-5886-8A8F-95C55FE2C034}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Valeur"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{4DBB5E8D-E156-57E8-96AA-F2EEF0FE2F46}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Évolution"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{6F1FC427-9A4F-5D33-AB14-C949F04D55F2}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Prix"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{41384991-8B8B-5A87-B663-AE825A5BDF41}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Mécanique"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{5FA1163B-31AE-53B8-ACC8-905E119ACC5F}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Pièces"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{09B497A9-7C40-544F-9114-88DF0FF90F4F}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Tendance"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{546026DC-0ABC-5C65-B7DD-210515831C41}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Prix moyen"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{0E54D6B8-162B-5D9A-81BE-24A1A15A6A6B}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Mix matière"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{99704CDD-5D2C-57A3-A605-B75C0E37DE88}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Top marchés"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{8112FF1B-5D8A-5DCF-BCD2-2BCC59F27299}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Carte"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{B4B7DA77-B7B4-50FA-A4FB-09065F98A78B}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Prix par marché"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{91774506-3EF4-57E9-8F90-DE1F1B9EEAEC}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Segments"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{0403F73A-A01D-52F7-89CB-81BA75F75E03}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Régions"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{56F151B9-EAA7-511C-A75A-05D1C55684A4}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Auto Valeur"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{6246E69D-8A36-5A3B-B813-C0373F8D0BFB}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Auto Évolution"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{38CA91C8-8271-5A31-9E33-C7F1998C2B1F}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Auto Part"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{ED720045-FF05-5B6B-92A8-E09B1980A707}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Auto Prix"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{88ADBCAC-A7F5-53E5-8845-F77954A771F8}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="KPI Auto Or"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{9716E5BD-35E9-534E-9906-85C103D67874}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Poids des automatiques"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{5F627E7F-EE1C-57BE-8E79-02BD20C622FE}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Prix acier et or"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{98A3816A-1613-5A19-A0BC-BF5916F061F4}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Marchés des automatiques"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{D7B67EB1-2763-571F-A902-ED8081981FE6}" /></window>
+    <window class='worksheet' hidden='true' maximized='true' name="Courbe mensuelle"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
+        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
+        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{04210055-D51B-5D2A-ABB1-B3491CE53B46}" /></window>
+  </windows>
+  <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
+    <explanation-types />
+  </explain-data>
+</workbook>

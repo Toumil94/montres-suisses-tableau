@@ -166,6 +166,23 @@ PERIODE = EXP.calc("Calc_Periode", "Période", "IF [annee] = " + P + " THEN \"An
 
 TOT_MRD = EXP.calc("Calc_ValeurToutesMrd", "Exportations totales (Mrd CHF)", "SUM([valeur_chf]) / 1000000000", fmt="n#,##0.00")
 M_MRD = MEN.calc("Calc_MensuelMrd", "Exportations (Mrd CHF)", "SUM([valeur_chf]) / 1000000000", fmt="n#,##0.00")
+# Segment du luxe mécanique : montres-bracelets automatiques, en or (9101.21) ou en acier (9102.21)
+LUXE_LBL = "Mécanique automatique"
+LUX_COND = '([code_sh] = "910121" OR [code_sh] = "910221")'
+SEG = EXP.calc("Calc_Segment", "Segment", f'IF {LUX_COND} THEN "{LUXE_LBL}" ELSE "Autres montres" END',
+               dtype="string", role="dimension")
+LUX_V = EXP.calc("Calc_LuxeValeur", "Automatiques (Mrd CHF)",
+                 f"SUM(IF [annee] = {P} AND {LUX_COND} THEN [valeur_chf] END) / 1000000000", fmt="n#,##0.00")
+LUX_V1 = EXP.calc("Calc_LuxeValeurN1", "Automatiques N-1 (Mrd CHF)",
+                  f"SUM(IF [annee] = {P} - 1 AND {LUX_COND} THEN [valeur_chf] END) / 1000000000", fmt="n#,##0.00")
+LUX_EV = EXP.calc("Calc_LuxeEvolution", "Évolution des automatiques vs N-1", "([Calc_LuxeValeur] - [Calc_LuxeValeurN1]) / [Calc_LuxeValeurN1]", fmt=FMT_PCT)
+LUX_PCS = EXP.calc("Calc_LuxePieces", "Automatiques exportées (pièces)",
+                   f"SUM(IF [annee] = {P} AND {LUX_COND} THEN [pieces] END)", fmt="n#,##0")
+LUX_PRIX = EXP.calc("Calc_LuxePrix", "Prix moyen d'une automatique (CHF)", "[Calc_LuxeValeur] * 1000000000 / [Calc_LuxePieces]", fmt=FMT_CHF)
+LUX_PART = EXP.calc("Calc_LuxePart", "Part des automatiques dans la valeur", "[Calc_LuxeValeur] * 1000000000 / [Calc_ValeurAnnee]", fmt=FMT_PCT)
+LUX_OR = EXP.calc("Calc_LuxeOr", "Part de l'or dans les automatiques",
+                  f'SUM(IF [annee] = {P} AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)', fmt=FMT_PCT)
+
 M_PRIX = MEN.calc("Calc_PrixMensuel", "Prix moyen (CHF par pièce)", "SUM([valeur_chf]) / SUM([pieces])", fmt=FMT_CHF)
 
 
@@ -353,10 +370,10 @@ class Sheet:
     </worksheet>"""
 
 
-def topn_filter(sheet: Sheet, inst: Inst):
+def topn_filter(sheet: Sheet, inst: Inst, member: str = "true"):
     sheet.filters.append(
         f"<filter class='categorical' column={a(inst.ref)}><groupfilter function='member' level={a('[' + inst.name + ']')} "
-        f"member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>")
+        f"member={a(member)} user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' /></filter>")
     sheet.slices.append(inst.ref)
     sheet.extra_insts.append(inst)
 
@@ -422,6 +439,37 @@ def build_sheets() -> list[Sheet]:
     s.color(Inst(e, EVOL, "User", "qk"))
     s.sort = (Inst(e, "region", "None", "nk"), Inst(e, V_AN, "User", "qk"), "DESC")
     s.labels = True
+    sheets.append(s)
+
+    # --- Segment du luxe mécanique ---
+    seg = Inst(e, SEG, "None", "nk")
+    for key, cid, title in [("KPI Auto Valeur", LUX_V, "Automatiques (Mrd CHF)"), ("KPI Auto Évolution", LUX_EV, "Évolution vs N-1"),
+                            ("KPI Auto Part", LUX_PART, "Part de la valeur suisse"), ("KPI Auto Prix", LUX_PRIX, "Prix moyen par montre"),
+                            ("KPI Auto Or", LUX_OR, "Part de l'or")]:
+        s = Sheet(key, e, "Text", title=title)
+        s.text(Inst(e, cid, "User", "qk"))
+        s.style.append(f"<style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value={a(GOLD)} />"
+                       f"<format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule>")
+        sheets.append(s)
+
+    s = Sheet("Poids des automatiques", e, "Bar", rows=[Inst(e, TOT_MRD, "User", "qk")], cols=[yr],
+              title="Exportations par année : les automatiques face aux autres montres (Mrd CHF)")
+    s.color(seg)
+    sheets.append(s)
+
+    s = Sheet("Prix acier et or", e, "Line", rows=[Inst(e, PRIX_ALL, "User", "qk")], cols=[yr],
+              title="Prix moyen d'une automatique à l'export : acier et or (CHF)")
+    s.color(Inst(e, "matiere", "None", "nk"))
+    s.labels = True
+    topn_filter(s, seg, f'"{LUXE_LBL}"')
+    sheets.append(s)
+
+    s = Sheet("Marchés des automatiques", e, "Bar", rows=[pays], cols=[Inst(e, V_MRD, "User", "qk")],
+              title="Top 15 des marchés : automatiques en acier et en or (Mrd CHF)")
+    s.color(Inst(e, "matiere", "None", "nk")).tooltip(Inst(e, PRIX, "User", "qk"))
+    s.sort = (pays, Inst(e, V_MRD, "User", "qk"), "DESC")
+    topn_filter(s, seg, f'"{LUXE_LBL}"')
+    topn_filter(s, Inst(e, TOP15, "None", "nk"))
     sheets.append(s)
 
     m = MEN
@@ -490,6 +538,19 @@ def build_dashboards(year: int) -> list[Dash]:
     d.sheet("Prix moyen", 50800, 24000, 48000, 38000)
     d.sheet("Mix matière", 1200, 63500, 48400, 32000)
     d.sheet("Segments", 50800, 63500, 48000, 32000)
+    d.text([(SOURCE_TXT, 8, SLATE, False, False)], 1200, 96000, 97600, 3500)
+    out.append(d)
+
+    d = Dash("Luxe mécanique", "Luxe mécanique", "")
+    d.text([("Le cœur du luxe : la montre mécanique automatique", 20, INK, True, True),
+            ("Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)",
+             11, SLATE, False, False)], 1200, 1000, 70000, 7000)
+    d.param(72000, 1000, 26800, 7000, "KPI Auto Valeur")
+    for i, k in enumerate(["KPI Auto Valeur", "KPI Auto Évolution", "KPI Auto Part", "KPI Auto Prix", "KPI Auto Or"]):
+        d.sheet(k, 1200 + i * 19600, 9500, 18800, 13000)
+    d.sheet("Poids des automatiques", 1200, 24000, 48400, 36000)
+    d.sheet("Prix acier et or", 50800, 24000, 48000, 36000)
+    d.sheet("Marchés des automatiques", 1200, 61000, 97600, 34500)
     d.text([(SOURCE_TXT, 8, SLATE, False, False)], 1200, 96000, 97600, 3500)
     out.append(d)
 

@@ -1,0 +1,193 @@
+annee,pays,pays_en,iso3,region,code_sh,categorie,matiere,mouvement,valeur_chf,valeur_usd,pieces,rang_pays
+2010,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,8356,1
+2010,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,5380,1
+2010,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,2149,1
+2010,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,2509,2
+2010,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,7665,2
+2010,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,7142,2
+2010,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,1972,3
+2010,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,2976,3
+2010,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,720000000,800000000,8579,3
+2010,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,90000000,100000000,1228,4
+2010,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,8263,4
+2010,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,5331,4
+2011,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,5194,1
+2011,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,2152,1
+2011,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,720000000,800000000,5724,1
+2011,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,4466,2
+2011,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,2271,2
+2011,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,2514,2
+2011,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,8969,3
+2011,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,5226,3
+2011,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,8087,3
+2011,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,5380,4
+2011,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,4687,4
+2011,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,4179,4
+2012,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,6134,1
+2012,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,5950,1
+2012,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,8129,1
+2012,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,2717,2
+2012,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,3723,2
+2012,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,8471,2
+2012,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,810000000,900000000,5683,3
+2012,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,2714,3
+2012,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,3775,3
+2012,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,1186,4
+2012,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,2832,4
+2012,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,2478,4
+2013,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,6305,1
+2013,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,8369,1
+2013,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,4074,1
+2013,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,2485,2
+2013,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),540000000,600000000,3077,2
+2013,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,1564,2
+2013,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,8972,3
+2013,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,7377,3
+2013,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,3595,3
+2013,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,4968,4
+2013,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,7635,4
+2013,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,7376,4
+2014,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,5956,1
+2014,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,8753,1
+2014,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,3840,1
+2014,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,8020,2
+2014,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,6844,2
+2014,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,5031,2
+2014,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,8716,3
+2014,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,1346,3
+2014,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,3475,3
+2014,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,90000000,100000000,3106,4
+2014,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,7967,4
+2014,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,2426,4
+2015,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,6824,1
+2015,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),540000000,600000000,8557,1
+2015,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,8468,1
+2015,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,3095,2
+2015,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,1183,2
+2015,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,3284,2
+2015,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,6349,3
+2015,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,3708,3
+2015,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,5992,3
+2015,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,7410,4
+2015,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,5728,4
+2015,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,1786,4
+2016,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,6607,1
+2016,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,2413,1
+2016,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,2312,1
+2016,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,5593,2
+2016,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,8608,2
+2016,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,720000000,800000000,1215,2
+2016,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,90000000,100000000,3850,3
+2016,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,8039,3
+2016,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,6953,3
+2016,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,8616,4
+2016,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,4205,4
+2016,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,2711,4
+2017,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,6112,1
+2017,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,8455,1
+2017,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,3150,1
+2017,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,5380,2
+2017,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,8891,2
+2017,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,4577,2
+2017,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,1350,3
+2017,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,6388,3
+2017,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,6062,3
+2017,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,6940,4
+2017,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),540000000,600000000,2636,4
+2017,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,5202,4
+2018,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,4167,1
+2018,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,5798,1
+2018,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,2133,1
+2018,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,1842,2
+2018,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,3467,2
+2018,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,4066,2
+2018,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,7766,3
+2018,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,1920,3
+2018,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,4136,3
+2018,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,2989,4
+2018,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,1034,4
+2018,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,1790,4
+2019,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,810000000,900000000,5267,1
+2019,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,2309,1
+2019,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,7113,1
+2019,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,5385,2
+2019,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,6406,2
+2019,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,2500,2
+2019,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,90000000,100000000,7315,3
+2019,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,5222,3
+2019,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,7188,3
+2019,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,2803,4
+2019,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,4256,4
+2019,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,4940,4
+2020,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,5071,1
+2020,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,1600,1
+2020,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,1478,1
+2020,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,2501,2
+2020,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,4181,2
+2020,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,4983,2
+2020,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,2037,3
+2020,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,4644,3
+2020,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,6769,3
+2020,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,7305,4
+2020,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,7370,4
+2020,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,4210,4
+2021,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,540000000,600000000,6084,1
+2021,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,7271,1
+2021,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,4458,1
+2021,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,4459,2
+2021,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,7616,2
+2021,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,540000000,600000000,7715,2
+2021,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,180000000,200000000,3814,3
+2021,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),720000000,800000000,4166,3
+2021,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,3700,3
+2021,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,180000000,200000000,1331,4
+2021,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,4374,4
+2021,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,8051,4
+2022,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,7155,1
+2022,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),540000000,600000000,5378,1
+2022,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,1609,1
+2022,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,1334,2
+2022,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,5249,2
+2022,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,5103,2
+2022,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,1571,3
+2022,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,5080,3
+2022,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,3395,3
+2022,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,1845,4
+2022,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,6602,4
+2022,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,6098,4
+2023,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,810000000,900000000,6873,1
+2023,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,1048,1
+2023,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,450000000,500000000,3053,1
+2023,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,810000000,900000000,2910,2
+2023,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,3541,2
+2023,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,3254,2
+2023,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,4495,3
+2023,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),810000000,900000000,5769,3
+2023,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,2441,3
+2023,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,1278,4
+2023,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,5790,4
+2023,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,360000000,400000000,3716,4
+2024,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,4701,1
+2024,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),90000000,100000000,1244,1
+2024,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,6208,1
+2024,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,5775,2
+2024,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),180000000,200000000,2642,2
+2024,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,810000000,900000000,6284,2
+2024,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,450000000,500000000,2161,3
+2024,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),270000000,300000000,7520,3
+2024,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,3853,3
+2024,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,360000000,400000000,3032,4
+2024,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),540000000,600000000,7948,4
+2024,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,3730,4
+2025,États-Unis,United States,USA,Amérique du Nord,910121,Montres-bracelets,Métal précieux,Mécanique automatique,630000000,700000000,5226,1
+2025,États-Unis,United States,USA,Amérique du Nord,910211,Montres-bracelets,Acier et autres,Électronique (quartz),450000000,500000000,4443,1
+2025,États-Unis,United States,USA,Amérique du Nord,910221,Montres-bracelets,Acier et autres,Mécanique automatique,630000000,700000000,1521,1
+2025,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910121,Montres-bracelets,Métal précieux,Mécanique automatique,270000000,300000000,5383,2
+2025,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,1980,2
+2025,Émirats arabes unis,United Arab Emirates,ARE,Moyen-Orient,910221,Montres-bracelets,Acier et autres,Mécanique automatique,720000000,800000000,7609,2
+2025,Taïwan,Taiwan,TWN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,720000000,800000000,8470,3
+2025,Taïwan,Taiwan,TWN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),360000000,400000000,4162,3
+2025,Taïwan,Taiwan,TWN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,90000000,100000000,7363,3
+2025,Chine,China,CHN,Asie,910121,Montres-bracelets,Métal précieux,Mécanique automatique,90000000,100000000,8177,4
+2025,Chine,China,CHN,Asie,910211,Montres-bracelets,Acier et autres,Électronique (quartz),630000000,700000000,1374,4
+2025,Chine,China,CHN,Asie,910221,Montres-bracelets,Acier et autres,Mécanique automatique,270000000,300000000,1511,4
