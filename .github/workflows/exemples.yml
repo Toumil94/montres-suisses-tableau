@@ -19,17 +19,17 @@ jobs:
               return urllib.request.urlopen(urllib.request.Request(u, headers=H), timeout=60).read()
           out = pathlib.Path("exemples"); n = 0; log = []
           repos = []
-          for q in ["dashboard", "KPI dashboard", "sales dashboard", "watch", "makeovermonday", "workout wednesday"]:
-              for start in (0, 20):
-                  u = "https://public.tableau.com/api/search/query?count=20&language=en-us&start=%d&type=vizzes&query=%s" % (start, urllib.parse.quote(q))
-                  try:
-                      js = json.loads(get(u))
-                  except Exception as e:
-                      log.append(f"search {q}: {e}"); continue
-                  for r in js.get("results", []):
-                      w = r.get("workbook") or {}
-                      if w.get("workbookRepoUrl") and w.get("showInProfile", True):
-                          repos.append((w.get("lastPublishDate", 0), w["workbookRepoUrl"]))
+          for prof in ["kevin.flerlage", "ken.flerlage", "tableau.public", "lindsay.betzendahl", "zach.bowders", "sam.parsons", "chimdi.nwosu", "nicole.klassen", "andy.kriebel", "eva.murray"]:
+              u = f"https://public.tableau.com/profile/api/{prof}/workbooks?count=20&index=0"
+              try:
+                  js = json.loads(get(u))
+              except Exception as e:
+                  log.append(f"profil {prof}: {e}"); continue
+              items = js if isinstance(js, list) else js.get("contents", js.get("workbooks", []))
+              log.append(f"profil {prof}: {len(items)}")
+              for w in items:
+                  if w.get("workbookRepoUrl"):
+                      repos.append((w.get("lastPublishDate", 0), w["workbookRepoUrl"]))
           repos = sorted(set(repos), reverse=True)
           log.append(f"{len(repos)} classeurs trouvés")
           for _, repo in repos[:40]:
@@ -55,8 +55,15 @@ jobs:
               (out / f"{repo}.files.txt").write_text("\n".join(names))
               n += 1; log.append(f"{repo}: {b} OK")
           (out / "journal.txt").write_text("\n".join(log))
-          print("::notice title=Exemples::" + " | ".join(log[-30:]))
+          print("::notice title=Exemples::" + " | ".join(log[:40]))
           P
+      - name: Recherche de code GitHub
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh search code "source-build='2026" --extension twb --limit 20 --json repository,path > exemples/github.json || true
+          echo "::notice title=GitHub::$(head -c 1500 exemples/github.json)"
       - name: Publier
         run: |
           git config user.name "github-actions[bot]"
