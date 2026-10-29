@@ -63,6 +63,8 @@ def main() -> int:
     probe = get(API.format(freq="A"), {"reporterCode": 757, "flowCode": "X", "period": 2024, "cmdCode": "910221",
                                        "partnerCode": 0, "includeDesc": "true"})
     print(f"::notice title=Sonde Comtrade::{'ok ' + probe.text[:300] if probe is not None else ERREURS}")
+    if probe is None:
+        return 1
     ref = get("https://comtradeapi.un.org/files/v1/app/reference/partnerAreas.json", {})
     if ref is not None:
         (RAW / "partnerAreas.json").write_text(ref.text, encoding="utf-8")
