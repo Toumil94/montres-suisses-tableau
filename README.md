@@ -8,6 +8,8 @@ Un projet **Tableau** sur les exportations officielles de montres suisses, de 20
 
 [![Collecte des données](https://github.com/Toumil94/montres-suisses-tableau/actions/workflows/collecte.yml/badge.svg)](https://github.com/Toumil94/montres-suisses-tableau/actions/workflows/collecte.yml)
 
+**Tableaux de bord en ligne : [Tableau Public](https://public.tableau.com/app/profile/toumi.lyes/viz/Montres-Suisses/Vuedensemble)**
+
 ## Les résultats en un coup d'œil
 
 - **Deux fois moins de montres, 21 % de valeur en plus** : 14,6 millions de pièces en 2025 contre 29,3 millions en 2012, pour 24,5 Mrd CHF.
