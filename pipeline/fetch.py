@@ -24,16 +24,22 @@ S = requests.Session()
 S.headers["User-Agent"] = "montres-suisses-tableau (projet open source, github.com/Toumil94)"
 
 
-def get(url: str, params: dict, tries: int = 6):
+ERREURS: list[str] = []
+
+
+def get(url: str, params: dict, tries: int = 3):
     for i in range(tries):
         try:
-            r = S.get(url, params=params, timeout=60)
+            r = S.get(url, params=params, timeout=25)
             if r.status_code == 200:
                 return r
-            print(f"  HTTP {r.status_code} {r.text[:200]}")
+            msg = f"HTTP {r.status_code} {r.text[:150]}"
         except requests.RequestException as e:
-            print(f"  erreur réseau : {e}")
-        time.sleep(5 * (i + 1))
+            msg = f"erreur réseau : {str(e)[:150]}"
+        print("  " + msg, flush=True)
+        if len(ERREURS) < 5:
+            ERREURS.append(msg)
+        time.sleep(3 * (i + 1))
     return None
 
 
@@ -53,6 +59,10 @@ def comtrade(freq: str, **params) -> list[dict]:
 
 
 def main() -> int:
+    t0 = time.time()
+    probe = get(API.format(freq="A"), {"reporterCode": 757, "flowCode": "X", "period": 2024, "cmdCode": "910221",
+                                       "partnerCode": 0, "includeDesc": "true"})
+    print(f"::notice title=Sonde Comtrade::{'ok ' + probe.text[:300] if probe is not None else ERREURS}")
     ref = get("https://comtradeapi.un.org/files/v1/app/reference/partnerAreas.json", {})
     if ref is not None:
         (RAW / "partnerAreas.json").write_text(ref.text, encoding="utf-8")
@@ -64,7 +74,7 @@ def main() -> int:
             rows = comtrade("A", period=y, cmdCode=c)
             annual += rows
             n += len(rows)
-        print(f"{y} : {n} lignes")
+        print(f"{y} : {n} lignes ({time.time() - t0:.0f} s)", flush=True)
         if n == 0:
             print(f"::warning title=Comtrade::aucune donnée annuelle pour {y}")
     (RAW / "comtrade_annuel.json").write_text(json.dumps(annual, ensure_ascii=False), encoding="utf-8")
@@ -80,7 +90,8 @@ def main() -> int:
     if snb is not None:
         (RAW / "snb_devkum.csv").write_text(snb.text, encoding="utf-8")
 
-    print(f"::notice title=Collecte::{len(annual)} lignes annuelles, {len(monthly)} lignes mensuelles, "
+    print(f"::notice title=Erreurs::{ERREURS}")
+    print(f"::notice title=Collecte::{time.time() - t0:.0f} s, {len(annual)} lignes annuelles, {len(monthly)} lignes mensuelles, "
           f"BNS {'ok' if snb is not None else 'échec'}")
     return 0 if annual else 1
 
