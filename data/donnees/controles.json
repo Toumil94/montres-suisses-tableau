@@ -1,0 +1,91 @@
+{
+  "annees": {
+    "2012": {
+      "monde_usd": 21587595532,
+      "somme_pays_usd": 21583474807,
+      "couverture": 0.9998,
+      "pieces_monde": 29286718
+    },
+    "2013": {
+      "monde_usd": 22284843978,
+      "somme_pays_usd": 22280198834,
+      "couverture": 0.9998,
+      "pieces_monde": 28258329
+    },
+    "2014": {
+      "monde_usd": 22967706275,
+      "somme_pays_usd": 22963049784,
+      "couverture": 0.9998,
+      "pieces_monde": 28747286
+    },
+    "2015": {
+      "monde_usd": 21058105053,
+      "somme_pays_usd": 21053316122,
+      "couverture": 0.9998,
+      "pieces_monde": 28234950
+    },
+    "2016": {
+      "monde_usd": 18588562542,
+      "somme_pays_usd": 18585578652,
+      "couverture": 0.9998,
+      "pieces_monde": 25494207
+    },
+    "2017": {
+      "monde_usd": 19129190260,
+      "somme_pays_usd": 19126705827,
+      "couverture": 0.9999,
+      "pieces_monde": 24387446
+    },
+    "2018": {
+      "monde_usd": 20435393678,
+      "somme_pays_usd": 20433473432,
+      "couverture": 0.9999,
+      "pieces_monde": 23813763
+    },
+    "2019": {
+      "monde_usd": 20630393076,
+      "somme_pays_usd": 20629923153,
+      "couverture": 1.0,
+      "pieces_monde": 20705569
+    },
+    "2020": {
+      "monde_usd": 17219886526,
+      "somme_pays_usd": 17219886526,
+      "couverture": 1.0,
+      "pieces_monde": 13813354
+    },
+    "2021": {
+      "monde_usd": 23249230081,
+      "somme_pays_usd": 23249193892,
+      "couverture": 1.0,
+      "pieces_monde": 15752168
+    },
+    "2022": {
+      "monde_usd": 24862846871,
+      "somme_pays_usd": 24862781508,
+      "couverture": 1.0,
+      "pieces_monde": 15808847
+    },
+    "2023": {
+      "monde_usd": 28439735334,
+      "somme_pays_usd": 28439691299,
+      "couverture": 1.0,
+      "pieces_monde": 16947457
+    },
+    "2024": {
+      "monde_usd": 27885569215,
+      "somme_pays_usd": 27885544792,
+      "couverture": 1.0,
+      "pieces_monde": 15365128
+    },
+    "2025": {
+      "monde_usd": 29517778729,
+      "somme_pays_usd": 29517741703,
+      "couverture": 1.0,
+      "pieces_monde": 14615800
+    }
+  },
+  "lignes_exportations": 17384,
+  "pays": 214,
+  "derniere_annee": 2025
+}

@@ -2,7 +2,6 @@
 
 Sorties (data/donnees/) :
 - exportations.csv : une ligne par année, pays de destination et code SH à 6 chiffres
-- mensuel.csv      : une ligne par mois et code SH (toutes destinations)
 - controles.json   : contrôles qualité (cohérence avec le total « Monde » publié)
 """
 from __future__ import annotations
@@ -56,7 +55,10 @@ def pays(iso3: str) -> tuple[str, str, str]:
         return iso3, iso3, "Autres"
     fr = NOMS_FR.get(iso3, FR.gettext(c.name))
     en = NOMS_EN.get(iso3, getattr(c, "common_name", c.name))
-    if iso3 in MOYEN_ORIENT:
+    autres = {"VAT": "Europe", "TLS": "Asie", "SXM": "Amérique latine", "UMI": "Océanie", "ATF": "Afrique", "HMD": "Océanie"}
+    if iso3 in autres:
+        reg = autres[iso3]
+    elif iso3 in MOYEN_ORIENT:
         reg = "Moyen-Orient"
     elif iso3 in ("USA", "CAN"):
         reg = "Amérique du Nord"
@@ -118,20 +120,6 @@ def main() -> None:
     df = df.sort_values(["annee", "rang_pays", "code_sh"])
     df.to_csv(OUT / "exportations.csv", index=False)
 
-    men = pd.DataFrame(charger("mensuel"))
-    men["cmdCode"] = men["cmdCode"].astype(str)
-    men = men[men["cmdCode"].isin(CODES) & (men["partnerCode"] == 0)].copy()
-    men["annee"] = men["period"].astype(str).str[:4].astype(int)
-    men["mois"] = men["period"].astype(str).str[4:6].astype(int)
-    men = men.merge(fx, on=["annee", "mois"], how="left")
-    out = pd.DataFrame({
-        "date": pd.to_datetime(dict(year=men["annee"], month=men["mois"], day=1)).dt.strftime("%Y-%m-%d"),
-        "code_sh": men["cmdCode"], "matiere": men["cmdCode"].map(lambda c: CODES[c][1]),
-        "mouvement": men["cmdCode"].map(lambda c: CODES[c][2]),
-        "valeur_chf": (men["primaryValue"] * men["chf_par_usd"]).round(), "pieces": men["qty"].fillna(0).astype(int)})
-    out = out.dropna(subset=["valeur_chf"]).astype({"valeur_chf": "int64"}).sort_values(["date", "code_sh"])
-    out.to_csv(OUT / "mensuel.csv", index=False)
-
     # Contrôles : la somme des pays doit retrouver le total « Monde » publié (hors pays non identifiés)
     ctrl = {}
     for y, g in monde.groupby("annee"):
@@ -140,10 +128,9 @@ def main() -> None:
         ctrl[int(y)] = {"monde_usd": round(m), "somme_pays_usd": round(d), "couverture": round(d / m, 4) if m else None,
                         "pieces_monde": int(g["qty"].sum())}
     (OUT / "controles.json").write_text(json.dumps({
-        "annees": ctrl, "lignes_exportations": len(df), "lignes_mensuel": len(out),
-        "pays": int(df["pays"].nunique()), "derniere_annee": int(df["annee"].max()),
-        "dernier_mois": out["date"].max()}, ensure_ascii=False, indent=2))
-    print(f"{len(df)} lignes annuelles, {df['pays'].nunique()} pays, {len(out)} lignes mensuelles")
+        "annees": ctrl, "lignes_exportations": len(df),
+        "pays": int(df["pays"].nunique()), "derniere_annee": int(df["annee"].max())}, ensure_ascii=False, indent=2))
+    print(f"{len(df)} lignes annuelles, {df['pays'].nunique()} pays")
 
 
 if __name__ == "__main__":

@@ -93,26 +93,12 @@ def main() -> int:
             print(f"::warning title=Comtrade::aucune donnée annuelle pour {y}")
     annual = [r for f in sorted(dossier.glob("*.json")) for r in json.loads(f.read_text(encoding="utf-8"))]
 
-    dossier_m = RAW / "mensuel"
-    dossier_m.mkdir(exist_ok=True)
-    for y in range(2018, 2027):
-        f = dossier_m / f"{y}.json"
-        if f.exists() and y < 2025:
-            continue
-        periods = ",".join(f"{y}{m:02d}" for m in range(1, 13))
-        rows = []
-        for c in (CODES[:7], CODES[7:]):
-            rows += comtrade("M", period=periods, partnerCode=0, cmdCode=",".join(c))
-        if rows:
-            f.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
-    monthly = [r for f in sorted(dossier_m.glob("*.json")) for r in json.loads(f.read_text(encoding="utf-8"))]
-
     snb = get("https://data.snb.ch/api/cube/devkum/data/csv/fr", {})
     if snb is not None:
         (RAW / "snb_devkum.csv").write_text(snb.text, encoding="utf-8")
 
     print(f"::notice title=Erreurs::{ERREURS}")
-    print(f"::notice title=Collecte::{time.time() - t0:.0f} s, {len(annual)} lignes annuelles, {len(monthly)} lignes mensuelles, "
+    print(f"::notice title=Collecte::{time.time() - t0:.0f} s, {len(annual)} lignes annuelles, "
           f"BNS {'ok' if snb is not None else 'échec'}")
     return 0 if annual else 1
 

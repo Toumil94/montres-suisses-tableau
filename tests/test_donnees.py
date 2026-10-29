@@ -36,14 +36,3 @@ def test_ordre_de_grandeur():
     recent = an[an.index >= 2015]
     recent = recent[recent.index < recent.index.max()] if len(recent) > 1 else recent
     assert recent.between(10, 40).all(), an.to_dict()
-
-
-def test_mensuel_coherent_avec_annuel():
-    """Hors dernière année (parfois partielle), le cumul des mois retrouve l'annuel à 2 % près."""
-    df = exp()
-    men = pd.read_csv(D / "mensuel.csv")
-    men["annee"] = men["date"].str[:4].astype(int)
-    a = df.groupby("annee")["valeur_chf"].sum()
-    m = men.groupby("annee")["valeur_chf"].sum()
-    for y in sorted(set(a.index) & set(m.index))[:-1]:
-        assert abs(m[y] / a[y] - 1) < 0.05, (y, m[y], a[y])

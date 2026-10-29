@@ -124,15 +124,6 @@ EXP = Source("exp", "Exportations annuelles", "exportations.csv", [
 ])
 EXP.geo["pays_en"] = "[Country].[Name]"
 
-MEN = Source("men", "Exportations mensuelles", "mensuel.csv", [
-    ("date", "date", "dimension", "Mois"),
-    ("code_sh", "string", "dimension", "Code SH"),
-    ("matiere", "string", "dimension", "Matière de la boîte"),
-    ("mouvement", "string", "dimension", "Mouvement"),
-    ("valeur_chf", "real", "measure", "Valeur (CHF)"),
-    ("pieces", "integer", "measure", "Pièces"),
-])
-
 PARAM = "[Parameters].[Parameter 1]"
 P = PARAM   # dans une formule, un paramètre s'écrit [Parameters].[Parameter 1]
 MRD = "n#,##0"
@@ -165,7 +156,6 @@ PERIODE = EXP.calc("Calc_Periode", "Période", "IF [annee] = " + P + " THEN \"An
                    dtype="string", role="dimension")
 
 TOT_MRD = EXP.calc("Calc_ValeurToutesMrd", "Exportations totales (Mrd CHF)", "SUM([valeur_chf]) / 1000000000", fmt="n#,##0.00")
-M_MRD = MEN.calc("Calc_MensuelMrd", "Exportations (Mrd CHF)", "SUM([valeur_chf]) / 1000000000", fmt="n#,##0.00")
 # Segment du luxe mécanique : montres-bracelets automatiques, en or (9101.21) ou en acier (9102.21)
 LUXE_LBL = "Mécanique automatique"
 LUX_COND = '([code_sh] = "910121" OR [code_sh] = "910221")'
@@ -183,7 +173,6 @@ LUX_PART = EXP.calc("Calc_LuxePart", "Part des automatiques dans la valeur", "[C
 LUX_OR = EXP.calc("Calc_LuxeOr", "Part de l'or dans les automatiques",
                   f'SUM(IF [annee] = {P} AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)', fmt=FMT_PCT)
 
-M_PRIX = MEN.calc("Calc_PrixMensuel", "Prix moyen (CHF par pièce)", "SUM([valeur_chf]) / SUM([pieces])", fmt=FMT_CHF)
 
 
 def params_xml() -> str:
@@ -472,11 +461,6 @@ def build_sheets() -> list[Sheet]:
     topn_filter(s, Inst(e, TOP15, "None", "nk"))
     sheets.append(s)
 
-    m = MEN
-    s = Sheet("Courbe mensuelle", m, "Line", rows=[Inst(m, M_MRD, "User", "qk")], cols=[Inst(m, "date", "Month", "ok")],
-              title="Exportations mensuelles (CHF), une ligne par année")
-    s.color(Inst(m, "date", "Year", "ok"))
-    sheets.append(s)
     return sheets
 
 
@@ -565,12 +549,6 @@ def build_dashboards(year: int) -> list[Dash]:
     d.text([(SOURCE_TXT, 8, SLATE, False, False)], 1200, 96000, 97600, 3500)
     out.append(d)
 
-    d = Dash("Saisonnalité", "Saisonnalité", "")
-    d.text([("Le rythme de l'année", 20, INK, True, True),
-            ("Exportations mensuelles, toutes destinations confondues", 11, SLATE, False, False)], 1200, 1000, 97600, 7000)
-    d.sheet("Courbe mensuelle", 1200, 9500, 97600, 85000)
-    d.text([(SOURCE_TXT, 8, SLATE, False, False)], 1200, 96000, 97600, 3500)
-    out.append(d)
     return out
 
 
@@ -609,7 +587,6 @@ def build() -> Path:
   <datasources>
 {params_xml()}
 {EXP.xml()}
-{MEN.xml()}
   </datasources>
   <worksheets>
 {chr(10).join(s.xml() for s in sheets)}
@@ -630,7 +607,7 @@ def build() -> Path:
     twbx = OUT / f"{NAME}.twbx"
     with zipfile.ZipFile(twbx, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(twb, f"{NAME}.twb")
-        for f in ("exportations.csv", "mensuel.csv"):
+        for f in ("exportations.csv",):
             z.write(DATA / "donnees" / f, f"Data/donnees/{f}")
     return twb
 

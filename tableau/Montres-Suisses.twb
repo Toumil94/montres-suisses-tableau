@@ -284,106 +284,6 @@
       </column>
       <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
     </datasource>
-    <datasource caption="Exportations mensuelles" inline='true' name="federated.73f164900186b053985c5b60" version="26.1">
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption="Exportations mensuelles" name="textscan.b49ef500752d5266">
-            <connection class='textscan' directory='Data/donnees' filename="mensuel.csv" password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation connection="textscan.b49ef500752d5266" name="mensuel.csv" table="[mensuel#csv]" type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-            <column datatype="date" name="date" ordinal='0' />
-            <column datatype="string" name="code_sh" ordinal='1' />
-            <column datatype="string" name="matiere" ordinal='2' />
-            <column datatype="string" name="mouvement" ordinal='3' />
-            <column datatype="real" name="valeur_chf" ordinal='4' />
-            <column datatype="integer" name="pieces" ordinal='5' />
-          </columns>
-        </relation>
-        <metadata-records>
-          <metadata-record class='column'>
-            <remote-name>date</remote-name>
-            <remote-type>133</remote-type>
-            <local-name>[date]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>date</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>date</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>code_sh</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[code_sh]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>code_sh</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>matiere</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[matiere]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>matiere</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>mouvement</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[mouvement]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>mouvement</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>valeur_chf</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[valeur_chf]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>valeur_chf</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>pieces</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[pieces]</local-name>
-            <parent-name>[mensuel.csv]</parent-name>
-            <remote-alias>pieces</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <column caption="Mois" datatype="date" name="[date]" role="dimension" type="ordinal" />
-      <column caption="Code SH" datatype="string" name="[code_sh]" role="dimension" type="nominal" />
-      <column caption="Matière de la boîte" datatype="string" name="[matiere]" role="dimension" type="nominal" />
-      <column caption="Mouvement" datatype="string" name="[mouvement]" role="dimension" type="nominal" />
-      <column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" />
-      <column caption="Pièces" datatype="integer" name="[pieces]" role="measure" type="quantitative" />
-      <column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_MensuelMrd]" role="measure" type="quantitative">
-        <calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" />
-      </column>
-      <column caption="Prix moyen (CHF par pièce)" datatype="real" default-format="n#,##0" name="[Calc_PrixMensuel]" role="measure" type="quantitative">
-        <calculation class='tableau' formula="SUM([valeur_chf]) / SUM([pieces])" />
-      </column>
-      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
-    </datasource>
   </datasources>
   <worksheets>
     <worksheet name="KPI Valeur">
@@ -932,32 +832,6 @@
       </table>
       <simple-id uuid="{A9FE0290-4A13-5BC3-AE3D-F899A0F5BE69}" />
     </worksheet>
-    <worksheet name="Courbe mensuelle">
-      <layout-options><title><formatted-text><run bold='true' fontcolor="#14202B" fontsize='12'>Exportations mensuelles (CHF), une ligne par année</run></formatted-text></title></layout-options>
-      <table>
-        <view>
-          <datasources><datasource caption="Exportations mensuelles" name="federated.73f164900186b053985c5b60" /></datasources>
-          
-          <datasource-dependencies datasource="federated.73f164900186b053985c5b60"><column caption="Valeur (CHF)" datatype="real" name="[valeur_chf]" role="measure" type="quantitative" /><column caption="Exportations (Mrd CHF)" datatype="real" default-format="n#,##0.00" name="[Calc_MensuelMrd]" role="measure" type="quantitative"><calculation class='tableau' formula="SUM([valeur_chf]) / 1000000000" /></column><column caption="Mois" datatype="date" name="[date]" role="dimension" type="ordinal" /><column-instance column="[Calc_MensuelMrd]" derivation="User" name="[usr:Calc_MensuelMrd:qk]" pivot='key' type="quantitative" /><column-instance column="[date]" derivation="Month" name="[mn:date:ok]" pivot='key' type="ordinal" /><column-instance column="[date]" derivation="Year" name="[yr:date:ok]" pivot='key' type="ordinal" /></datasource-dependencies>
-          
-          
-          
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view><breakdown value='auto' /></view>
-            <mark class="Line" />
-            <encodings><color column="[federated.73f164900186b053985c5b60].[yr:date:ok]" /></encodings>
-            
-          </pane>
-        </panes>
-        <rows>[federated.73f164900186b053985c5b60].[usr:Calc_MensuelMrd:qk]</rows>
-        <cols>[federated.73f164900186b053985c5b60].[mn:date:ok]</cols>
-      </table>
-      <simple-id uuid="{1EE363E1-5907-5B96-88B9-CE776F0A40D0}" />
-    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard name="Vue d'ensemble">
@@ -1017,24 +891,11 @@
       </zones>
       <simple-id uuid="{A5B9FA47-9DD6-5F88-89CA-CBCEE81CF023}" />
     </dashboard>
-    <dashboard name="Saisonnalité">
-      <style />
-      <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
-      <zones>
-        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='11' type-v2='text' w='97600' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le rythme de l'année</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Exportations mensuelles, toutes destinations confondues</run></formatted-text></zone>
-          <zone h='85000' id='12' name="Courbe mensuelle" w='97600' x='1200' y='9500' />
-          <zone h='3500' id='13' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
-        </zone>
-      </zones>
-      <simple-id uuid="{73222491-AD52-5892-A82A-AA057929670D}" />
-    </dashboard>
   </dashboards>
   <windows source-height='30'>
     <window class='dashboard' maximized='true' name="Vue d'ensemble"><viewpoints><viewpoint name="KPI Valeur" /><viewpoint name="KPI Évolution" /><viewpoint name="KPI Pièces" /><viewpoint name="KPI Prix" /><viewpoint name="KPI Mécanique" /><viewpoint name="Tendance" /><viewpoint name="Prix moyen" /><viewpoint name="Mix matière" /><viewpoint name="Segments" /></viewpoints><active id='-1' /><simple-id uuid="{EA2D4BE1-B51F-515B-8E82-0B94D7D3AAE6}" /></window>
     <window class='dashboard' maximized='true' name="Luxe mécanique"><viewpoints><viewpoint name="KPI Auto Valeur" /><viewpoint name="KPI Auto Évolution" /><viewpoint name="KPI Auto Part" /><viewpoint name="KPI Auto Prix" /><viewpoint name="KPI Auto Or" /><viewpoint name="Poids des automatiques" /><viewpoint name="Prix acier et or" /><viewpoint name="Marchés des automatiques" /></viewpoints><active id='-1' /><simple-id uuid="{C6B50D7D-A45C-541B-B612-CAF93B74B7CE}" /></window>
     <window class='dashboard' maximized='true' name="Marchés"><viewpoints><viewpoint name="Carte" /><viewpoint name="Top marchés" /><viewpoint name="Prix par marché" /><viewpoint name="Régions" /></viewpoints><active id='-1' /><simple-id uuid="{3116F2B2-561B-5097-956B-6753A5D772DE}" /></window>
-    <window class='dashboard' maximized='true' name="Saisonnalité"><viewpoints><viewpoint name="Courbe mensuelle" /></viewpoints><active id='-1' /><simple-id uuid="{7085DB03-4F69-5886-8A8F-95C55FE2C034}" /></window>
     <window class='worksheet' hidden='true' maximized='true' name="KPI Valeur"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
         <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
         <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{4DBB5E8D-E156-57E8-96AA-F2EEF0FE2F46}" /></window>
@@ -1098,9 +959,6 @@
     <window class='worksheet' hidden='true' maximized='true' name="Marchés des automatiques"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
         <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
         <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{D7B67EB1-2763-571F-A902-ED8081981FE6}" /></window>
-    <window class='worksheet' hidden='true' maximized='true' name="Courbe mensuelle"><cards><edge name='left'><strip size='160'><card type='pages' /><card type='filters' /><card type='marks' /></strip></edge>
-        <edge name='top'><strip size='2147483647'><card type='columns' /></strip><strip size='2147483647'><card type='rows' /></strip>
-        <strip size='30'><card type='title' /></strip></edge></cards><simple-id uuid="{04210055-D51B-5D2A-ABB1-B3491CE53B46}" /></window>
   </windows>
   <explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>
     <explanation-types />
