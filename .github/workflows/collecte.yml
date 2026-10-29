@@ -1,0 +1,41 @@
+name: Collecte des données
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 6 3 * *"   # le 3 de chaque mois
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Télécharger (UN Comtrade, BNS)
+        run: python pipeline/fetch.py
+      - name: Construire les tables
+        id: build
+        run: python pipeline/build.py
+      - name: Contrôles qualité
+        run: python -m pytest -q tests
+      - name: Régénérer le classeur Tableau
+        run: |
+          pip install lxml
+          python tableau/build_twb.py
+          python tableau/validate_twb.py
+      - name: Publier
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw
+          if [ "${{ job.status }}" = "success" ]; then git add data tableau; fi
+          git diff --cached --quiet || git commit -m "Données mises à jour ($(date +%Y-%m-%d))"
+          git push
