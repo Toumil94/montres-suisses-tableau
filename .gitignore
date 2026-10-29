@@ -2,3 +2,4 @@ __pycache__/
 .pytest_cache/
 *.pyc
 tableau/__pycache__/
+tableau/exportations.hyper

@@ -17,18 +17,16 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUT = ROOT / "tableau"
 NAME = "Montres-Suisses"
-VERSION = "18.1"   # version de format historique, que toutes les versions récentes de Tableau savent ouvrir
-SOURCE_BUILD = "2021.1.2 (20211.21.0511.0935)"
-# Manifeste repris d'un classeur réel enregistré par Tableau 2021.1 : il déclare les fonctionnalités de format
-# utilisées (identifiants de feuilles, modèle de données à objets, zones « type-v2 »...).
-MANIFEST = """    <GroupAction />
-    <_.fcp.GroupActionAddRemove.true...GroupActionAddRemove />
-    <_.fcp.MarkAnimation.true...MarkAnimation />
-    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
-    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
-    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
-    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+VERSION = "18.1"   # Tableau laisse toujours cet attribut à 18.1 ; le format réel est décrit par le manifeste
+SOURCE_BUILD = "2026.2.0 (20262.26.0528.2205)"
+# Manifeste et conventions repris des modèles officiels de Tableau (github.com/tableau/tableau-plugin) :
+# modèle de données à objets, extrait Hyper, identifiants de feuilles, balises de tri modernes.
+MANIFEST = """    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />"""
 NS = uuid.UUID("2b7e1a64-5c0d-4b8e-9f21-7a3c6d9e0f15")
 
@@ -59,6 +57,7 @@ class Source:
         self.cols = cols
         self.calcs: list[tuple[str, str, str, str, str, str]] = []   # (id, libellé, formule, type, rôle, format)
         self.geo: dict[str, str] = {}
+        self.rows = 0
 
     def calc(self, cid, caption, formula, dtype="real", role="measure", fmt=""):
         self.calcs.append((cid, caption, formula, dtype, role, fmt))
@@ -82,37 +81,47 @@ class Source:
     def ref(self, inst: str) -> str:
         return f"[{self.name}].[{inst}]"
 
+    @property
+    def hyper(self) -> str:
+        return "Data/Extracts/" + self.csv.replace(".csv", ".hyper")
+
     def xml(self) -> str:
         cols = "\n".join(f"            <column datatype={a(TYPES[t][0])} name={a(n)} ordinal='{i}' />"
                          for i, (n, t, _, _) in enumerate(self.cols))
-        meta = []
-        for i, (n, t, _, _) in enumerate(self.cols):
-            dt, rt, agg = TYPES[t]
-            meta.append(f"""          <metadata-record class='column'>
+
+        def records(parent: str, extract: bool) -> str:
+            out = []
+            for i, (n, t, _, _) in enumerate(self.cols):
+                dt, rt, agg = TYPES[t]
+                fam = f"\n            <family>{escape(self.csv)}</family>" if extract else ""
+                coll = "\n            <collation flag='0' name='LROOT' />" if (extract and dt == "string") else ""
+                out.append(f"""          <metadata-record class='column'>
             <remote-name>{escape(n)}</remote-name>
             <remote-type>{rt}</remote-type>
             <local-name>[{escape(n)}]</local-name>
-            <parent-name>[{escape(self.csv)}]</parent-name>
+            <parent-name>[{escape(parent)}]</parent-name>
             <remote-alias>{escape(n)}</remote-alias>
-            <ordinal>{i}</ordinal>
+            <ordinal>{i}</ordinal>{fam}
             <local-type>{dt}</local-type>
             <aggregation>{agg}</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[{self.obj}]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <contains-null>true</contains-null>{coll}
+            <object-id>[{self.obj}]</object-id>
           </metadata-record>""")
+            return "\n".join(out)
+
         out = [f"""    <datasource caption={a(self.caption)} inline='true' name={a(self.name)} version={a(VERSION)}>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption={a(self.caption)} name={a(self.conn)}>
+          <named-connection caption={a(self.csv.replace('.csv', ''))} name={a(self.conn)}>
             <connection class='textscan' directory='Data/donnees' filename={a(self.csv)} password='' server='' />
           </named-connection>
         </named-connections>
-{self.relation("_.fcp.ObjectModelEncapsulateLegacy.false...relation", 8, cols)}
-{self.relation("_.fcp.ObjectModelEncapsulateLegacy.true...relation", 8, cols)}
+{self.relation("relation", 8, cols)}
         <metadata-records>
-{chr(10).join(meta)}
+{records(self.csv, False)}
         </metadata-records>
-      </connection>"""]
+      </connection>
+      <aliases enabled='yes' />"""]
         for n, t, role, cap in self.cols:
             dt = TYPES[t][0]
             typ = "quantitative" if role == "measure" else ("ordinal" if dt in ("integer", "date") else "nominal")
@@ -123,22 +132,35 @@ class Source:
             fm = f" default-format={a(fmt)}" if fmt else ""
             out.append(f"      <column caption={a(cap)} datatype={a(dt)}{fm} name={a('[' + cid + ']')} role={a(role)} type={a(typ)}>\n"
                        f"        <calculation class='tableau' formula={a(f)} />\n      </column>")
-        out.append("      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' "
-                   "_.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' "
-                   "_.fcp.SchemaViewerObjectModel.true...common-percentage='1' "
-                   "_.fcp.SchemaViewerObjectModel.true...user-set-layout-v2='true' "
-                   "dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
+        out.append(f"      <column caption={a(self.csv)} datatype='table' hidden='true' "
+                   f"name={a('[__tableau_internal_object_id__].[' + self.obj + ']')} role='measure' type='quantitative' />")
+        out.append(f"""      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname={a(self.hyper)} default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/29/2026 03:00:00 AM' username=''>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path={a(self.csv.replace('.csv', ''))} increment-value='%null%' refresh-type='create' rows-inserted={a(self.rows)} timestamp-start='2026-10-29 03:00:00.000' />
+          </refresh>
+          <metadata-records>
+{records("Extract", True)}
+          </metadata-records>
+        </connection>
+      </extract>""")
+        out.append("      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
         if self.geo:
             out.append("      <semantic-values>\n        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />\n      </semantic-values>")
-        out.append(f"""      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        out.append("      <date-options start-of-week='monday' />")
+        out.append(f"""      <object-graph>
         <objects>
           <object caption={a(self.csv)} id={a(self.obj)}>
             <properties context=''>
 {self.relation("relation", 14, cols)}
             </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
           </object>
         </objects>
-      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>""")
+      </object-graph>""")
         out.append("    </datasource>")
         return "\n".join(out)
 
@@ -351,7 +373,7 @@ class Sheet:
         sort = ""
         if self.sort:
             dim, meas, direction = self.sort
-            sort = f"<sort class='computed' column={a(dim.ref)} direction={a(direction)} using={a(meas.ref)} />"
+            sort = f"<computed-sort column={a(dim.ref)} direction={a(direction)} using={a(meas.ref)} />"
         slices = ("<slices>" + "".join(f"<column>{escape(c)}</column>" for c in self.slices) + "</slices>") if self.slices else ""
         enc = "".join(f"<{k} column={a(i.ref)} />" for k, i in self.enc)
         pane_style = []
@@ -504,37 +526,49 @@ def build_sheets() -> list[Sheet]:
 # 3. Tableaux de bord
 # =============================================================================
 class Dash:
+    counter = 3
     def __init__(self, name: str, title: str, subtitle: str):
         self.name, self.title, self.subtitle = name, title, subtitle
         self.zones: list[str] = []
         self.sheet_names: list[str] = []
-        self.n = 10
+        self.root = self.zid()
 
-    def zid(self):
-        self.n += 1
-        return self.n
+    @staticmethod
+    def zid():
+        # identifiants de zone uniques dans tout le classeur, pas seulement dans un tableau de bord
+        Dash.counter += 1
+        return Dash.counter
 
     def sheet(self, sheet, x, y, w, h):
-        self.zones.append(f"<zone h='{h}' id='{self.zid()}' name={a(sheet)} w='{w}' x='{x}' y='{y}' />")
+        self.zones.append(f"<zone h='{h}' id='{self.zid()}' name={a(sheet)} type-v2='visual' w='{w}' x='{x}' y='{y}' />")
         self.sheet_names.append(sheet)
 
     def text(self, runs, x, y, w, h):
         body = "".join(f"<run bold={a('true' if b else 'false')} fontcolor={a(c)} fontsize='{sz}'>{escape(t)}</run>"
                        + ("<run>Æ&#10;</run>" if nl else "") for t, sz, c, b, nl in runs)
-        self.zones.append(f"<zone h='{h}' id='{self.zid()}' _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' w='{w}' x='{x}' y='{y}'>"
+        self.zones.append(f"<zone h='{h}' id='{self.zid()}' type-v2='text' w='{w}' x='{x}' y='{y}'>"
                           f"<formatted-text>{body}</formatted-text></zone>")
 
     def param(self, x, y, w, h, sheet):
         self.zones.append(f"<zone h='{h}' id='{self.zid()}' mode='slider' name={a(sheet)} param={a(PARAM)} "
-                          f"_.fcp.SetMembershipControl.false...type='paramctrl' _.fcp.SetMembershipControl.true...type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
+                          f"type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
 
     def xml(self) -> str:
         z = "\n          ".join(self.zones)
         return f"""    <dashboard name={a(self.name)}>
       <style />
       <size maxheight='900' maxwidth='1400' minheight='900' minwidth='1400' sizing-mode='fixed' />
+      <datasources>
+        <datasource name='Parameters' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Année' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='{{YEAR}}'>
+          <calculation class='tableau' formula='{{YEAR}}' />
+          <range granularity='1' max='{{YEAR}}' min='2012' />
+        </column>
+      </datasource-dependencies>
       <zones>
-        <zone h='100000' id='4' _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' w='100000' x='0' y='0'>
+        <zone h='100000' id='{self.root}' type-v2='layout-basic' w='100000' x='0' y='0'>
           {z}
         </zone>
       </zones>
@@ -611,7 +645,9 @@ def build() -> Path:
                + f"</viewpoints><active id='-1' /><simple-id uuid={a(uid('wd', d.name))} /></window>" for d in dashes]
     windows += [f"    <window class='worksheet' hidden='true' maximized='true' name={a(s.name)}>{CARDS}"
                 f"<simple-id uuid={a(uid('ww', s.name))} /></window>" for s in sheets]
+    EXP.rows = sum(1 for _ in open(DATA / "donnees" / "exportations.csv", encoding="utf-8")) - 1
     xml = f"""<?xml version='1.0' encoding='utf-8' ?>
+<!-- build 20262.26.0528.2205 -->
 <workbook original-version={a(VERSION)} source-build={a(SOURCE_BUILD)} source-platform='win' version={a(VERSION)} xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
 {MANIFEST}
@@ -642,7 +678,33 @@ def build() -> Path:
         z.write(twb, f"{NAME}.twb")
         for f in ("exportations.csv",):
             z.write(DATA / "donnees" / f, f"Data/donnees/{f}")
+        z.write(write_hyper(), EXP.hyper)
     return twb
+
+
+def write_hyper() -> Path:
+    """Extrait Hyper (format natif de Tableau) : Tableau Public exige un extrait pour publier."""
+    from tableauhyperapi import (Connection, CreateMode, HyperProcess, Inserter, SqlType, TableDefinition,
+                                 TableName, Telemetry)
+    import pandas as pd
+
+    df = pd.read_csv(DATA / "donnees" / "exportations.csv", dtype={"code_sh": str})
+    sql = {"integer": SqlType.big_int(), "real": SqlType.double(), "string": SqlType.text()}
+    table = TableDefinition(TableName("Extract", "Extract"),
+                            [TableDefinition.Column(n, sql[t]) for n, t, _, _ in EXP.cols])
+    path = OUT / "exportations.hyper"
+    path.unlink(missing_ok=True)
+    with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hp:
+        with Connection(hp.endpoint, path, CreateMode.CREATE_AND_REPLACE) as con:
+            con.catalog.create_schema("Extract")
+            con.catalog.create_table(table)
+            conv = {"integer": int, "real": float, "string": str}
+            rows = [[None if pd.isna(v) else conv[t](v) for v, (_, t, _, _) in zip(r, EXP.cols)]
+                    for r in df[[n for n, *_ in EXP.cols]].itertuples(index=False)]
+            with Inserter(con, table) as ins:
+                ins.add_rows(rows)
+                ins.execute()
+    return path
 
 
 if __name__ == "__main__":

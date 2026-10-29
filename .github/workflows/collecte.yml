@@ -30,8 +30,9 @@ jobs:
         run: python pipeline/analyse.py
       - name: Régénérer le classeur Tableau
         run: |
-          pip install lxml
+          pip install lxml tableauhyperapi
           python tableau/build_twb.py
+          python tableau/validate_twb.py
           python tableau/check_twb.py
       - name: Publier
         if: always()

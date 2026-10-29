@@ -5,7 +5,7 @@ Prérequis : **Tableau Public Desktop** (gratuit) et un compte Tableau Public.
 ## 1. Ouvrir
 
 1. Télécharge [`Montres-Suisses.twbx`](Montres-Suisses.twbx) (bouton **Download raw file** sur GitHub).
-2. Double-clique dessus : Tableau Public s'ouvre avec les données incluses.
+2. Double-clique dessus : Tableau Public s'ouvre avec les données incluses (extrait Hyper, exigé par Tableau Public).
 3. Les onglets en bas montrent les 3 tableaux de bord : **Vue d'ensemble**, **Luxe mécanique**, **Marchés**.
 
 ## 2. Vérifier
@@ -16,8 +16,7 @@ Sur **Vue d'ensemble**, avec l'année 2025 : 24,54 Mrd CHF, 14 615 791 montres, 
 
 1. **Fichier**, puis **Enregistrer sur Tableau Public**.
 2. Connecte-toi, donne le titre « Montres suisses à l'export ».
-3. Tableau demande de créer un extrait des données : accepte.
-4. Le navigateur s'ouvre sur ta page Tableau Public : copie le lien et envoie-le-moi pour que je l'ajoute au README et au portfolio.
+3. Le navigateur s'ouvre sur ta page Tableau Public : copie le lien et envoie-le-moi pour que je l'ajoute au README et au portfolio.
 
 ## En cas de problème
 

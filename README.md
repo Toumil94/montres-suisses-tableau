@@ -46,17 +46,17 @@ Un **curseur Année** recalcule tous les indicateurs. Fichier : [`tableau/Montre
 - **Données officielles** : exportations suisses déclarées par l'Office fédéral de la douane et de la sécurité des frontières, diffusées par l'ONU (UN Comtrade), codes SH 9101 (boîte en métal précieux) et 9102 (autres boîtes), par pays et par type de mouvement. Conversion en CHF au cours moyen de la **Banque nationale suisse**.
 - **Qualité** : la somme des pays retrouve le total mondial publié (99,98 %), contrôlé à chaque mise à jour.
 - **Tableau** : paramètre d'année, calculs conditionnels (`IF [annee] = [Année]`), expressions LOD (`{FIXED}`) pour les parts et le top 15, carte par rôle géographique, tri calculé.
-- **Dashboard as code** : le classeur (`.twb`) est généré par [`build_twb.py`](tableau/build_twb.py) au format XML de Tableau, puis contrôlé automatiquement ([`check_twb.py`](tableau/check_twb.py)) : chaque champ référencé existe, chaque formule est cohérente, chaque feuille d'un tableau de bord existe.
+- **Dashboard as code** : le classeur (`.twb`) est généré par [`build_twb.py`](tableau/build_twb.py) au format XML de Tableau avec un extrait Hyper, en suivant les modèles officiels de Tableau. Il est validé contre le [schéma XSD officiel](https://github.com/tableau/tableau-document-schemas) 2026.2, puis par un contrôle de cohérence ([`check_twb.py`](tableau/check_twb.py)) : chaque champ référencé existe, chaque formule est cohérente, chaque feuille d'un tableau de bord existe.
 
 ## Reproduire
 
 ```bash
-pip install -r requirements.txt lxml
+pip install -r requirements.txt lxml tableauhyperapi
 python pipeline/fetch.py        # API publique, limitée en débit : la collecte reprend là où elle s'est arrêtée
 python pipeline/build.py
 python -m pytest tests
 python pipeline/analyse.py
-python tableau/build_twb.py && python tableau/check_twb.py
+python tableau/build_twb.py && python tableau/validate_twb.py && python tableau/check_twb.py
 ```
 
 ## Auteur
