@@ -13,40 +13,47 @@ jobs:
         run: |
           mkdir -p exemples
           python3 - <<'P'
-          import json, urllib.request, zipfile, io, re, pathlib
+          import json, urllib.request, urllib.parse, zipfile, io, re, pathlib
           H = {"User-Agent": "Mozilla/5.0"}
           def get(u):
               return urllib.request.urlopen(urllib.request.Request(u, headers=H), timeout=60).read()
           out = pathlib.Path("exemples"); n = 0; log = []
-          for page in range(0, 6):
-              try:
-                  g = json.loads(get(f"https://public.tableau.com/api/gallery?page={page}&count=36&galleryType=viz-of-the-day&language=en-us"))
-              except Exception as e:
-                  log.append(f"gallery {page}: {e}"); continue
-              items = g.get("items") if isinstance(g, dict) else g
-              for it in items or []:
-                  repo = it.get("workbookRepoUrl") or ""
-                  if not repo or n >= 6:
-                      continue
+          repos = []
+          for q in ["dashboard", "KPI dashboard", "sales dashboard", "watch", "makeovermonday", "workout wednesday"]:
+              for start in (0, 20):
+                  u = "https://public.tableau.com/api/search/query?count=20&language=en-us&start=%d&type=vizzes&query=%s" % (start, urllib.parse.quote(q))
                   try:
-                      data = get(f"https://public.tableau.com/workbooks/{repo}.twb")
+                      js = json.loads(get(u))
                   except Exception as e:
-                      log.append(f"{repo}: {e}"); continue
-                  names = []
-                  try:
-                      z = zipfile.ZipFile(io.BytesIO(data))
-                      names = z.namelist()
-                      xml = z.read([f for f in names if f.endswith(".twb")][0])
-                  except zipfile.BadZipFile:
-                      xml = data
-                  head = xml[:800].decode("utf-8", "ignore")
-                  build = re.search(r"source-build='([^']+)'", head)
-                  b = build.group(1) if build else "?"
-                  if not b.startswith("2026"):
-                      log.append(f"{repo}: {b} ignoré"); continue
-                  (out / f"{repo}.twb").write_bytes(xml)
-                  (out / f"{repo}.files.txt").write_text("\n".join(names))
-                  n += 1; log.append(f"{repo}: {b} OK")
+                      log.append(f"search {q}: {e}"); continue
+                  for r in js.get("results", []):
+                      w = r.get("workbook") or {}
+                      if w.get("workbookRepoUrl") and w.get("showInProfile", True):
+                          repos.append((w.get("lastPublishDate", 0), w["workbookRepoUrl"]))
+          repos = sorted(set(repos), reverse=True)
+          log.append(f"{len(repos)} classeurs trouvés")
+          for _, repo in repos[:40]:
+              if n >= 6:
+                  break
+              try:
+                  data = get(f"https://public.tableau.com/workbooks/{repo}.twb")
+              except Exception as e:
+                  log.append(f"{repo}: {e}"); continue
+              names = []
+              try:
+                  z = zipfile.ZipFile(io.BytesIO(data))
+                  names = z.namelist()
+                  xml = z.read([f for f in names if f.endswith(".twb")][0])
+              except zipfile.BadZipFile:
+                  xml = data
+              head = xml[:800].decode("utf-8", "ignore")
+              build = re.search(r"source-build='([^']+)'", head)
+              b = build.group(1) if build else "?"
+              if not b.startswith("2026"):
+                  log.append(f"{repo}: {b} ignoré"); continue
+              (out / f"{repo}.twb").write_bytes(xml)
+              (out / f"{repo}.files.txt").write_text("\n".join(names))
+              n += 1; log.append(f"{repo}: {b} OK")
           (out / "journal.txt").write_text("\n".join(log))
           print("::notice title=Exemples::" + " | ".join(log[-30:]))
           P
