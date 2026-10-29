@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt matplotlib
       - name: Télécharger (UN Comtrade, BNS)
         timeout-minutes: 35   # au-delà, on publie ce qui a été collecté et la suite reprend au prochain lancement
         run: python pipeline/fetch.py
@@ -26,6 +26,8 @@ jobs:
         run: python pipeline/build.py
       - name: Contrôles qualité
         run: python -m pytest -q tests
+      - name: Chiffres de référence et graphiques
+        run: python pipeline/analyse.py
       - name: Régénérer le classeur Tableau
         run: |
           pip install lxml
@@ -38,6 +40,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/raw
-          if [ "${{ job.status }}" = "success" ]; then git add data tableau; fi
+          if [ "${{ job.status }}" = "success" ]; then git add data tableau analyse docs/images; fi
           git diff --cached --quiet || git commit -m "Données mises à jour ($(date +%Y-%m-%d))"
           git push
