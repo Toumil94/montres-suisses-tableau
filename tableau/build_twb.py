@@ -476,7 +476,7 @@ def build_sheets() -> list[Sheet]:
 
     s = Sheet("Carte", e, "Multipolygon", rows=[f"[{e.name}].[Latitude (generated)]"],
               cols=[f"[{e.name}].[Longitude (generated)]"], title="Destinations des montres suisses")
-    s.detail(Inst(e, "pays_en", "None", "nk")).color(Inst(e, V_AN, "User", "qk")).tooltip(pays).tooltip(Inst(e, EVOL, "User", "qk"))
+    s.detail(Inst(e, "pays_en", "None", "nk")).color(Inst(e, V_AN, "User", "qk")).tooltip(Inst(e, EVOL, "User", "qk"))
     sheets.append(s)
 
     s = Sheet("Prix par marché", e, "Circle", rows=[Inst(e, PRIX, "User", "qk")], cols=[Inst(e, PCS, "User", "qk")],
