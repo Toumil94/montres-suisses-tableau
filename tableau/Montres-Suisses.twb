@@ -304,7 +304,7 @@
         <calculation class='tableau' formula='SUM(IF [annee] = [Parameters].[Parameter 1] AND [code_sh] = "910121" THEN [valeur_chf] END) / ([Calc_LuxeValeur] * 1000000000)' />
       </column>
       <column caption="exportations.csv" datatype='table' hidden='true' name="[__tableau_internal_object_id__].[exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2]" role='measure' type='quantitative' />
-      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+      <extract count='-1' enabled='true' object-id='' units='records'>
         <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname="Data/Extracts/exportations.hyper" default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/29/2026 03:00:00 AM' username=''>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
           <refresh>
@@ -495,7 +495,6 @@
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />
       </semantic-values>
-      <date-options start-of-week='monday' />
       <object-graph>
         <objects>
           <object caption="exportations.csv" id="exportations.csv_EEEF5BAAB9CA5A0F9A14AD79FAF2">

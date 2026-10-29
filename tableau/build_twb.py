@@ -134,7 +134,7 @@ class Source:
                        f"        <calculation class='tableau' formula={a(f)} />\n      </column>")
         out.append(f"      <column caption={a(self.csv)} datatype='table' hidden='true' "
                    f"name={a('[__tableau_internal_object_id__].[' + self.obj + ']')} role='measure' type='quantitative' />")
-        out.append(f"""      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        out.append(f"""      <extract count='-1' enabled='true' object-id='' units='records'>
         <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname={a(self.hyper)} default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='10/29/2026 03:00:00 AM' username=''>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
           <refresh>
@@ -148,7 +148,6 @@ class Source:
         out.append("      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />")
         if self.geo:
             out.append("      <semantic-values>\n        <semantic-value key='[Country].[Name]' value='&quot;Switzerland&quot;' />\n      </semantic-values>")
-        out.append("      <date-options start-of-week='monday' />")
         out.append(f"""      <object-graph>
         <objects>
           <object caption={a(self.csv)} id={a(self.obj)}>
