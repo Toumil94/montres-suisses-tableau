@@ -445,7 +445,7 @@ def build_sheets() -> list[Sheet]:
                             ("KPI Pièces", PCS, "Montres exportées")]:
         s = Sheet(key, e, "Text", title=title)
         s.text(Inst(e, cid, "User", "qk"))
-        s.style.append(f"<style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value={a(INK)} />"
+        s.style.append(f"<style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value={a(INK)} />"
                        f"<format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule>")
         sheets.append(s)
 
@@ -488,6 +488,7 @@ def build_sheets() -> list[Sheet]:
     s = Sheet("Segments", e, "Square", rows=[Inst(e, "matiere", "None", "nk")], cols=[Inst(e, "mouvement", "None", "nk")],
               title="Valeur et prix moyen par segment")
     s.color(Inst(e, V_AN, "User", "qk")).text(Inst(e, PRIX, "User", "qk")).tooltip(Inst(e, EVOL, "User", "qk"))
+    s.labels = True
     sheets.append(s)
 
     s = Sheet("Régions", e, "Bar", rows=[Inst(e, "region", "None", "nk")], cols=[Inst(e, V_MRD, "User", "qk")],
@@ -504,7 +505,7 @@ def build_sheets() -> list[Sheet]:
                             ("KPI Auto Or", LUX_OR, "Part de l'or")]:
         s = Sheet(key, e, "Text", title=title)
         s.text(Inst(e, cid, "User", "qk"))
-        s.style.append(f"<style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value={a(GOLD)} />"
+        s.style.append(f"<style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value={a(GOLD)} />"
                        f"<format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule>")
         sheets.append(s)
 
@@ -548,8 +549,9 @@ class Dash:
         Dash.counter += 1
         return Dash.counter
 
-    def sheet(self, sheet, x, y, w, h):
-        self.zones.append(f"<zone h='{h}' id='{self.zid()}' name={a(sheet)} type-v2='visual' w='{w}' x='{x}' y='{y}' />")
+    def sheet(self, sheet, x, y, w, h, title=True):
+        st = "" if title else " show-title='false'"
+        self.zones.append(f"<zone h='{h}' id='{self.zid()}' name={a(sheet)}{st} type-v2='visual' w='{w}' x='{x}' y='{y}' />")
         self.sheet_names.append(sheet)
 
     def text(self, runs, x, y, w, h):
@@ -559,8 +561,14 @@ class Dash:
                           f"<formatted-text>{body}</formatted-text></zone>")
 
     def param(self, x, y, w, h, sheet):
-        self.zones.append(f"<zone h='{h}' id='{self.zid()}' mode='slider' name={a(sheet)} param={a(PARAM)} "
-                          f"type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
+        self.zones.append(f"<zone h='{h}' id='{self.zid()}' param={a(PARAM)} type-v2='paramctrl' w='{w}' x='{x}' y='{y}' />")
+
+    def kpis(self, items, color):
+        """Tuiles KPI : libellé dans une zone de texte (lisible), valeur dans la feuille sans titre."""
+        for i, (sheet, label) in enumerate(items):
+            x = 1200 + i * 19600
+            self.text([(label, 11, SLATE, True, False)], x, 9300, 18800, 3600)
+            self.sheet(sheet, x, 12900, 18800, 9800, title=False)
 
     def xml(self) -> str:
         z = "\n          ".join(self.zones)
@@ -595,8 +603,9 @@ def build_dashboards(year: int) -> list[Dash]:
     d.text([("Montres suisses à l'export", 20, INK, True, True),
             ("Moins de montres, plus de valeur : où en est l'horlogerie suisse ?", 11, SLATE, False, False)], 1200, 1000, 70000, 7000)
     d.param(72000, 1000, 26800, 7000, "KPI Valeur")
-    for i, k in enumerate(["KPI Valeur", "KPI Évolution", "KPI Pièces", "KPI Prix", "KPI Mécanique"]):
-        d.sheet(k, 1200 + i * 19600, 9500, 18800, 13000)
+    d.kpis([("KPI Valeur", "Exportations (Mrd CHF)"), ("KPI Évolution", "Évolution vs année précédente"),
+            ("KPI Pièces", "Montres exportées"), ("KPI Prix", "Prix moyen par montre (CHF)"),
+            ("KPI Mécanique", "Part mécanique (valeur)")], INK)
     d.sheet("Tendance", 1200, 24000, 48400, 38000)
     d.sheet("Prix moyen", 50800, 24000, 48000, 38000)
     d.sheet("Mix matière", 1200, 63500, 48400, 32000)
@@ -609,8 +618,9 @@ def build_dashboards(year: int) -> list[Dash]:
             ("Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)",
              11, SLATE, False, False)], 1200, 1000, 70000, 7000)
     d.param(72000, 1000, 26800, 7000, "KPI Auto Valeur")
-    for i, k in enumerate(["KPI Auto Valeur", "KPI Auto Évolution", "KPI Auto Part", "KPI Auto Prix", "KPI Auto Or"]):
-        d.sheet(k, 1200 + i * 19600, 9500, 18800, 13000)
+    d.kpis([("KPI Auto Valeur", "Automatiques (Mrd CHF)"), ("KPI Auto Évolution", "Évolution vs année précédente"),
+            ("KPI Auto Part", "Part de la valeur suisse"), ("KPI Auto Prix", "Prix moyen par montre (CHF)"),
+            ("KPI Auto Or", "Part de l'or")], GOLD)
     d.sheet("Poids des automatiques", 1200, 24000, 48400, 36000)
     d.sheet("Prix acier et or", 50800, 24000, 48000, 36000)
     d.sheet("Marchés des automatiques", 1200, 61000, 97600, 34500)

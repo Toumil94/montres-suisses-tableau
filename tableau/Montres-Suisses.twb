@@ -548,7 +548,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -575,7 +575,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -602,7 +602,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -629,7 +629,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -656,7 +656,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#14202B" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -851,7 +851,7 @@
             <view><breakdown value='auto' /></view>
             <mark class="Square" />
             <encodings><color column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_ValeurAnnee:qk]" /><text column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_PrixMoyen:qk]" /><tooltip column="[federated.db591f0d94dd5d62eab9577b].[usr:Calc_Evolution:qk]" /></encodings>
-            
+            <style><style-rule element='mark'><format attr='mark-labels-show' value='true' /><format attr='mark-labels-cull' value='true' /></style-rule></style>
           </pane>
         </panes>
         <rows>[federated.db591f0d94dd5d62eab9577b].[none:matiere:nk]</rows>
@@ -899,7 +899,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -926,7 +926,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -953,7 +953,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -980,7 +980,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -1007,7 +1007,7 @@
           
           <aggregation value='true' />
         </view>
-        <style><style-rule element='cell'><format attr='font-size' value='24' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
+        <style><style-rule element='cell'><format attr='font-size' value='22' /><format attr='color' value="#A37E2C" /><format attr='font-weight' value='bold' /><format attr='text-align' value='center' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view><breakdown value='auto' /></view>
@@ -1119,17 +1119,22 @@
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
           <zone h='7000' id='5' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Montres suisses à l'export</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Moins de montres, plus de valeur : où en est l'horlogerie suisse ?</run></formatted-text></zone>
-          <zone h='7000' id='6' mode='slider' name="KPI Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
-          <zone h='13000' id='7' name="KPI Valeur" type-v2='visual' w='18800' x='1200' y='9500' />
-          <zone h='13000' id='8' name="KPI Évolution" type-v2='visual' w='18800' x='20800' y='9500' />
-          <zone h='13000' id='9' name="KPI Pièces" type-v2='visual' w='18800' x='40400' y='9500' />
-          <zone h='13000' id='10' name="KPI Prix" type-v2='visual' w='18800' x='60000' y='9500' />
-          <zone h='13000' id='11' name="KPI Mécanique" type-v2='visual' w='18800' x='79600' y='9500' />
-          <zone h='38000' id='12' name="Tendance" type-v2='visual' w='48400' x='1200' y='24000' />
-          <zone h='38000' id='13' name="Prix moyen" type-v2='visual' w='48000' x='50800' y='24000' />
-          <zone h='32000' id='14' name="Mix matière" type-v2='visual' w='48400' x='1200' y='63500' />
-          <zone h='32000' id='15' name="Segments" type-v2='visual' w='48000' x='50800' y='63500' />
-          <zone h='3500' id='16' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+          <zone h='7000' id='6' param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='3600' id='7' type-v2='text' w='18800' x='1200' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Exportations (Mrd CHF)</run></formatted-text></zone>
+          <zone h='9800' id='8' name="KPI Valeur" show-title='false' type-v2='visual' w='18800' x='1200' y='12900' />
+          <zone h='3600' id='9' type-v2='text' w='18800' x='20800' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Évolution vs année précédente</run></formatted-text></zone>
+          <zone h='9800' id='10' name="KPI Évolution" show-title='false' type-v2='visual' w='18800' x='20800' y='12900' />
+          <zone h='3600' id='11' type-v2='text' w='18800' x='40400' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Montres exportées</run></formatted-text></zone>
+          <zone h='9800' id='12' name="KPI Pièces" show-title='false' type-v2='visual' w='18800' x='40400' y='12900' />
+          <zone h='3600' id='13' type-v2='text' w='18800' x='60000' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Prix moyen par montre (CHF)</run></formatted-text></zone>
+          <zone h='9800' id='14' name="KPI Prix" show-title='false' type-v2='visual' w='18800' x='60000' y='12900' />
+          <zone h='3600' id='15' type-v2='text' w='18800' x='79600' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Part mécanique (valeur)</run></formatted-text></zone>
+          <zone h='9800' id='16' name="KPI Mécanique" show-title='false' type-v2='visual' w='18800' x='79600' y='12900' />
+          <zone h='38000' id='17' name="Tendance" type-v2='visual' w='48400' x='1200' y='24000' />
+          <zone h='38000' id='18' name="Prix moyen" type-v2='visual' w='48000' x='50800' y='24000' />
+          <zone h='32000' id='19' name="Mix matière" type-v2='visual' w='48400' x='1200' y='63500' />
+          <zone h='32000' id='20' name="Segments" type-v2='visual' w='48000' x='50800' y='63500' />
+          <zone h='3500' id='21' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{0B693772-AC27-5E19-B023-1FDB2255D365}" />
@@ -1147,18 +1152,23 @@
         </column>
       </datasource-dependencies>
       <zones>
-        <zone h='100000' id='17' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='18' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le cœur du luxe : la montre mécanique automatique</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)</run></formatted-text></zone>
-          <zone h='7000' id='19' mode='slider' name="KPI Auto Valeur" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
-          <zone h='13000' id='20' name="KPI Auto Valeur" type-v2='visual' w='18800' x='1200' y='9500' />
-          <zone h='13000' id='21' name="KPI Auto Évolution" type-v2='visual' w='18800' x='20800' y='9500' />
-          <zone h='13000' id='22' name="KPI Auto Part" type-v2='visual' w='18800' x='40400' y='9500' />
-          <zone h='13000' id='23' name="KPI Auto Prix" type-v2='visual' w='18800' x='60000' y='9500' />
-          <zone h='13000' id='24' name="KPI Auto Or" type-v2='visual' w='18800' x='79600' y='9500' />
-          <zone h='36000' id='25' name="Poids des automatiques" type-v2='visual' w='48400' x='1200' y='24000' />
-          <zone h='36000' id='26' name="Prix acier et or" type-v2='visual' w='48000' x='50800' y='24000' />
-          <zone h='34500' id='27' name="Marchés des automatiques" type-v2='visual' w='97600' x='1200' y='61000' />
-          <zone h='3500' id='28' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        <zone h='100000' id='22' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='23' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Le cœur du luxe : la montre mécanique automatique</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Le segment de Rolex, Patek Philippe ou Audemars Piguet : montres-bracelets automatiques, boîte en acier (SH 9102.21) ou en or (SH 9101.21)</run></formatted-text></zone>
+          <zone h='7000' id='24' param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='3600' id='25' type-v2='text' w='18800' x='1200' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Automatiques (Mrd CHF)</run></formatted-text></zone>
+          <zone h='9800' id='26' name="KPI Auto Valeur" show-title='false' type-v2='visual' w='18800' x='1200' y='12900' />
+          <zone h='3600' id='27' type-v2='text' w='18800' x='20800' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Évolution vs année précédente</run></formatted-text></zone>
+          <zone h='9800' id='28' name="KPI Auto Évolution" show-title='false' type-v2='visual' w='18800' x='20800' y='12900' />
+          <zone h='3600' id='29' type-v2='text' w='18800' x='40400' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Part de la valeur suisse</run></formatted-text></zone>
+          <zone h='9800' id='30' name="KPI Auto Part" show-title='false' type-v2='visual' w='18800' x='40400' y='12900' />
+          <zone h='3600' id='31' type-v2='text' w='18800' x='60000' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Prix moyen par montre (CHF)</run></formatted-text></zone>
+          <zone h='9800' id='32' name="KPI Auto Prix" show-title='false' type-v2='visual' w='18800' x='60000' y='12900' />
+          <zone h='3600' id='33' type-v2='text' w='18800' x='79600' y='9300'><formatted-text><run bold="true" fontcolor="#5B6670" fontsize='11'>Part de l'or</run></formatted-text></zone>
+          <zone h='9800' id='34' name="KPI Auto Or" show-title='false' type-v2='visual' w='18800' x='79600' y='12900' />
+          <zone h='36000' id='35' name="Poids des automatiques" type-v2='visual' w='48400' x='1200' y='24000' />
+          <zone h='36000' id='36' name="Prix acier et or" type-v2='visual' w='48000' x='50800' y='24000' />
+          <zone h='34500' id='37' name="Marchés des automatiques" type-v2='visual' w='97600' x='1200' y='61000' />
+          <zone h='3500' id='38' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{D5426078-803A-5C8D-A3EE-3181B045149A}" />
@@ -1176,14 +1186,14 @@
         </column>
       </datasource-dependencies>
       <zones>
-        <zone h='100000' id='29' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='7000' id='30' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Où vont les montres suisses ?</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Destinations, croissance et positionnement prix par pays</run></formatted-text></zone>
-          <zone h='7000' id='31' mode='slider' name="Top marchés" param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
-          <zone h='46000' id='32' name="Carte" type-v2='visual' w='58000' x='1200' y='9500' />
-          <zone h='86000' id='33' name="Top marchés" type-v2='visual' w='38400' x='60400' y='9500' />
-          <zone h='39000' id='34' name="Prix par marché" type-v2='visual' w='29000' x='1200' y='56500' />
-          <zone h='39000' id='35' name="Régions" type-v2='visual' w='28000' x='31200' y='56500' />
-          <zone h='3500' id='36' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
+        <zone h='100000' id='39' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='7000' id='40' type-v2='text' w='70000' x='1200' y='1000'><formatted-text><run bold="true" fontcolor="#14202B" fontsize='20'>Où vont les montres suisses ?</run><run>Æ&#10;</run><run bold="false" fontcolor="#5B6670" fontsize='11'>Destinations, croissance et positionnement prix par pays</run></formatted-text></zone>
+          <zone h='7000' id='41' param="[Parameters].[Parameter 1]" type-v2='paramctrl' w='26800' x='72000' y='1000' />
+          <zone h='46000' id='42' name="Carte" type-v2='visual' w='58000' x='1200' y='9500' />
+          <zone h='86000' id='43' name="Top marchés" type-v2='visual' w='38400' x='60400' y='9500' />
+          <zone h='39000' id='44' name="Prix par marché" type-v2='visual' w='29000' x='1200' y='56500' />
+          <zone h='39000' id='45' name="Régions" type-v2='visual' w='28000' x='31200' y='56500' />
+          <zone h='3500' id='46' type-v2='text' w='97600' x='1200' y='96000'><formatted-text><run bold="false" fontcolor="#5B6670" fontsize='8'>Source : Office fédéral de la douane et de la sécurité des frontières (OFDF), via UN Comtrade (codes SH 9101 et 9102), valeurs converties en CHF au cours moyen de la BNS. Analyse : Lyes Toumi, github.com/Toumil94/montres-suisses-tableau</run></formatted-text></zone>
         </zone>
       </zones>
       <simple-id uuid="{A5B9FA47-9DD6-5F88-89CA-CBCEE81CF023}" />
